@@ -1,24 +1,243 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4xc-xg-Kia">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Bold copy.ttf">
+            <string>Roboto-Bold</string>
+        </array>
+        <array key="Roboto-Medium copy.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+        <array key="Roboto-Regular copy.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="nHe-Yi-uca">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="4xc-xg-Kia" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1UJ-6T-Vds">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="vpO-Jg-c4P"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HZF-M6-thK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-932" y="-407"/>
+        </scene>
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Weatherify" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04V-3u-Jgo">
+                                <rect key="frame" x="51" y="124" width="185" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="185" id="7h1-0j-mWo"/>
+                                    <constraint firstAttribute="height" constant="42" id="oqv-Cz-jiT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="35"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lzs-eP-AEe">
+                                <rect key="frame" x="45" y="315" width="325" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Kri-oK-twc"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="spotifyLogin"/>
+                                <connections>
+                                    <action selector="loginBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wZx-4u-gcr"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="JuK-ar-qLb">
+                                <rect key="frame" x="43" y="165" width="236" height="58"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="236" id="6Tx-Hu-hIj"/>
+                                    <constraint firstAttribute="height" constant="58" id="89W-1x-QtB"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e2D-dd-eGa">
+                                <rect key="frame" x="51" y="231" width="314" height="35.5"/>
+                                <string key="text">Discover new songs and get recommendations
+for your music based on the weather outside</string>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Music Bars" translatesAutoresizingMaskIntoConstraints="NO" id="LTM-KK-EXa">
+                                <rect key="frame" x="49" y="546" width="317" height="316"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="316" id="5Sq-IQ-xiC"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.10588235294117647" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="04V-3u-Jgo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="51" id="06X-SC-sfe"/>
+                            <constraint firstItem="Lzs-eP-AEe" firstAttribute="top" secondItem="e2D-dd-eGa" secondAttribute="bottom" constant="48.5" id="ETn-ii-Vfh"/>
+                            <constraint firstItem="LTM-KK-EXa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="49" id="NAq-4S-HBm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LTM-KK-EXa" secondAttribute="trailing" constant="48" id="OeG-VA-8EI"/>
+                            <constraint firstItem="LTM-KK-EXa" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="SEn-qU-afo"/>
+                            <constraint firstItem="e2D-dd-eGa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="51" id="UCx-Tb-bfN"/>
+                            <constraint firstItem="JuK-ar-qLb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="43" id="WfM-WV-lk8"/>
+                            <constraint firstItem="JuK-ar-qLb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="121" id="ZgG-hl-2tH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="e2D-dd-eGa" secondAttribute="trailing" constant="49" id="eoP-nr-1Di"/>
+                            <constraint firstItem="04V-3u-Jgo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="l1U-Vk-uzO"/>
+                            <constraint firstItem="e2D-dd-eGa" firstAttribute="top" secondItem="JuK-ar-qLb" secondAttribute="bottom" constant="8" symbolic="YES" id="qoK-up-GLu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Lzs-eP-AEe" secondAttribute="trailing" constant="44" id="yfg-PA-jqU"/>
+                            <constraint firstItem="Lzs-eP-AEe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="45" id="zOf-1J-QfM"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="P4g-8g-CzC"/>
+                    <connections>
+                        <outlet property="loginBtn" destination="Lzs-eP-AEe" id="kmW-7N-Smp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="5.7971014492753632" y="-407.14285714285711"/>
+        </scene>
+        <!--Home View Controller-->
+        <scene sceneID="nGJ-9c-idC">
+            <objects>
+                <viewController storyboardIdentifier="HomeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ln6-Tj-mDY" customClass="HomeViewController" customModule="Weatherify" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Nn9-c9-3As">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi, John" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="wK8-wQ-H3x">
+                                <rect key="frame" x="46" y="118" width="326" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="8ET-m4-p8I"/>
+                                    <constraint firstAttribute="width" constant="326" id="dyC-7a-kCd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="35"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z2b-Ge-abY">
+                                <rect key="frame" x="44" y="178" width="326" height="87"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather in Westwood, Los Angeles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="qF4-GQ-kOu">
+                                        <rect key="frame" x="12" y="4" width="314" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="26" id="LjZ-2n-aaE"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
+                                        <color key="textColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sun-rain" translatesAutoresizingMaskIntoConstraints="NO" id="8dO-PD-40v">
+                                        <rect key="frame" x="12" y="29" width="67" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="BqT-Zl-hcF"/>
+                                            <constraint firstAttribute="width" constant="67" id="myc-HG-c52"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="75°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pby-hQ-ZAr">
+                                        <rect key="frame" x="87" y="37" width="185" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="42" id="5GQ-wD-fPx"/>
+                                            <constraint firstAttribute="width" constant="185" id="ixE-eY-8Bq"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="40"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.15294117647058825" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Pby-hQ-ZAr" firstAttribute="top" secondItem="qF4-GQ-kOu" secondAttribute="bottom" constant="7" id="6jR-WY-wKJ"/>
+                                    <constraint firstItem="8dO-PD-40v" firstAttribute="leading" secondItem="Z2b-Ge-abY" secondAttribute="leading" constant="12" id="Gp5-Ti-cLp"/>
+                                    <constraint firstItem="Pby-hQ-ZAr" firstAttribute="leading" secondItem="8dO-PD-40v" secondAttribute="trailing" constant="8" symbolic="YES" id="MD7-Tt-LSP"/>
+                                    <constraint firstAttribute="height" constant="87" id="Ufc-c1-KLi"/>
+                                    <constraint firstAttribute="trailing" secondItem="qF4-GQ-kOu" secondAttribute="trailing" id="gBS-8W-Hli"/>
+                                    <constraint firstItem="qF4-GQ-kOu" firstAttribute="top" secondItem="Z2b-Ge-abY" secondAttribute="top" constant="4" id="jG1-s2-07a"/>
+                                    <constraint firstItem="qF4-GQ-kOu" firstAttribute="leading" secondItem="Z2b-Ge-abY" secondAttribute="leading" constant="12" id="qRN-on-m7e"/>
+                                    <constraint firstItem="8dO-PD-40v" firstAttribute="top" secondItem="Z2b-Ge-abY" secondAttribute="top" constant="29" id="tRa-nX-aob"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfK-Sw-0h7">
+                                <rect key="frame" x="44" y="304" width="325" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="6Dg-I9-dVz"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="KBD-3p-oBu"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="playlist-button"/>
+                                <connections>
+                                    <action selector="generatePlaylist:" destination="ln6-Tj-mDY" eventType="touchUpInside" id="KLN-k7-c3l"/>
+                                    <action selector="loginBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DTk-AB-Ghy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="WhV-AA-1Rd"/>
+                        <color key="backgroundColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.10588235294117647" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Z2b-Ge-abY" firstAttribute="leading" secondItem="WhV-AA-1Rd" secondAttribute="leading" constant="44" id="1xc-YB-KFN"/>
+                            <constraint firstItem="wK8-wQ-H3x" firstAttribute="leading" secondItem="WhV-AA-1Rd" secondAttribute="leading" constant="46" id="3K3-tT-HJd"/>
+                            <constraint firstItem="xfK-Sw-0h7" firstAttribute="top" secondItem="Z2b-Ge-abY" secondAttribute="bottom" constant="39" id="3Pf-B0-sDA"/>
+                            <constraint firstItem="wK8-wQ-H3x" firstAttribute="top" secondItem="WhV-AA-1Rd" secondAttribute="top" constant="74" id="Q35-4I-W6F"/>
+                            <constraint firstItem="WhV-AA-1Rd" firstAttribute="trailing" secondItem="xfK-Sw-0h7" secondAttribute="trailing" constant="45" id="dvg-rQ-iaA"/>
+                            <constraint firstItem="Z2b-Ge-abY" firstAttribute="top" secondItem="wK8-wQ-H3x" secondAttribute="bottom" constant="18" id="gfD-gV-t5q"/>
+                            <constraint firstItem="xfK-Sw-0h7" firstAttribute="leading" secondItem="WhV-AA-1Rd" secondAttribute="leading" constant="44" id="hmC-NB-1cX"/>
+                            <constraint firstItem="WhV-AA-1Rd" firstAttribute="trailing" secondItem="Z2b-Ge-abY" secondAttribute="trailing" constant="44" id="x8C-oU-G4x"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="locationLabel" destination="qF4-GQ-kOu" id="sOc-3b-1mz"/>
+                        <outlet property="playlistBtn" destination="xfK-Sw-0h7" id="EQv-lv-Us1"/>
+                        <outlet property="weatherImage" destination="8dO-PD-40v" id="Mbp-tm-cHi"/>
+                        <outlet property="weatherTemp" destination="Pby-hQ-ZAr" id="2gv-bw-SjQ"/>
+                        <outlet property="welcomeLabel" destination="wK8-wQ-H3x" id="aLE-u1-Xcw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mE9-Bb-UPd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="847.82608695652175" y="-407.14285714285711"/>
+        </scene>
+        <!--Auth View Controller-->
+        <scene sceneID="Yrg-qc-PRj">
+            <objects>
+                <viewController storyboardIdentifier="AuthVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mpb-dO-OHV" customClass="AuthViewController" customModule="Weatherify" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qc5-qT-VXQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Ls9-MW-ZcS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zwf-MN-wgE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1797" y="-407"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Music Bars" width="1268" height="1168"/>
+        <image name="logo" width="512" height="136"/>
+        <image name="playlist-button" width="512" height="71"/>
+        <image name="spotifyLogin" width="512" height="71"/>
+        <image name="sun-rain" width="240" height="238"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
