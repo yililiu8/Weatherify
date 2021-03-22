@@ -149,12 +149,22 @@ for your music based on the weather outside</string>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="75°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pby-hQ-ZAr">
-                                        <rect key="frame" x="87" y="37" width="185" height="42"/>
+                                        <rect key="frame" x="87" y="37" width="130" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="42" id="5GQ-wD-fPx"/>
-                                            <constraint firstAttribute="width" constant="185" id="ixE-eY-8Bq"/>
+                                            <constraint firstAttribute="width" constant="130" id="ixE-eY-8Bq"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="40"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="H: 78° L: 69°" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VeT-ke-lIh">
+                                        <rect key="frame" x="225" y="62" width="93" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="19c-yW-KxA"/>
+                                            <constraint firstAttribute="width" constant="93" id="Xxx-GD-NWm"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="13"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -165,6 +175,8 @@ for your music based on the weather outside</string>
                                     <constraint firstItem="8dO-PD-40v" firstAttribute="leading" secondItem="Z2b-Ge-abY" secondAttribute="leading" constant="12" id="Gp5-Ti-cLp"/>
                                     <constraint firstItem="Pby-hQ-ZAr" firstAttribute="leading" secondItem="8dO-PD-40v" secondAttribute="trailing" constant="8" symbolic="YES" id="MD7-Tt-LSP"/>
                                     <constraint firstAttribute="height" constant="87" id="Ufc-c1-KLi"/>
+                                    <constraint firstAttribute="bottom" secondItem="VeT-ke-lIh" secondAttribute="bottom" constant="9" id="Vym-hx-VG1"/>
+                                    <constraint firstAttribute="trailing" secondItem="VeT-ke-lIh" secondAttribute="trailing" constant="8" id="Xqo-ES-L3H"/>
                                     <constraint firstAttribute="trailing" secondItem="qF4-GQ-kOu" secondAttribute="trailing" id="gBS-8W-Hli"/>
                                     <constraint firstItem="qF4-GQ-kOu" firstAttribute="top" secondItem="Z2b-Ge-abY" secondAttribute="top" constant="4" id="jG1-s2-07a"/>
                                     <constraint firstItem="qF4-GQ-kOu" firstAttribute="leading" secondItem="Z2b-Ge-abY" secondAttribute="leading" constant="12" id="qRN-on-m7e"/>
@@ -203,10 +215,12 @@ for your music based on the weather outside</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="highAndLowTemp" destination="VeT-ke-lIh" id="1eD-Ue-XBs"/>
                         <outlet property="locationLabel" destination="qF4-GQ-kOu" id="sOc-3b-1mz"/>
                         <outlet property="playlistBtn" destination="xfK-Sw-0h7" id="EQv-lv-Us1"/>
                         <outlet property="weatherImage" destination="8dO-PD-40v" id="Mbp-tm-cHi"/>
                         <outlet property="weatherTemp" destination="Pby-hQ-ZAr" id="2gv-bw-SjQ"/>
+                        <outlet property="weatherView" destination="Z2b-Ge-abY" id="2q3-j6-ou6"/>
                         <outlet property="welcomeLabel" destination="wK8-wQ-H3x" id="aLE-u1-Xcw"/>
                     </connections>
                 </viewController>

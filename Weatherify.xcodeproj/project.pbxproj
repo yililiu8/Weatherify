@@ -64,6 +64,18 @@
 		947EC08026091E1E00CAED56 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC07F26091E1E00CAED56 /* AuthResponse.swift */; };
 		947EC08126091E1E00CAED56 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC07F26091E1E00CAED56 /* AuthResponse.swift */; };
 		947EC08226091E1E00CAED56 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC07F26091E1E00CAED56 /* AuthResponse.swift */; };
+		947EC0872609301C00CAED56 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC0862609301C00CAED56 /* WeatherService.swift */; };
+		947EC0882609301C00CAED56 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC0862609301C00CAED56 /* WeatherService.swift */; };
+		947EC0892609301C00CAED56 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC0862609301C00CAED56 /* WeatherService.swift */; };
+		947EC08E2609302D00CAED56 /* SpotifyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC08D2609302D00CAED56 /* SpotifyService.swift */; };
+		947EC08F2609302D00CAED56 /* SpotifyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC08D2609302D00CAED56 /* SpotifyService.swift */; };
+		947EC0902609302D00CAED56 /* SpotifyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC08D2609302D00CAED56 /* SpotifyService.swift */; };
+		947EC095260935E400CAED56 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC094260935E400CAED56 /* Weather.swift */; };
+		947EC096260935E400CAED56 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC094260935E400CAED56 /* Weather.swift */; };
+		947EC097260935E400CAED56 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC094260935E400CAED56 /* Weather.swift */; };
+		947EC09C2609481700CAED56 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC09B2609481700CAED56 /* Extensions.swift */; };
+		947EC09D2609481700CAED56 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC09B2609481700CAED56 /* Extensions.swift */; };
+		947EC09E2609481700CAED56 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC09B2609481700CAED56 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +131,10 @@
 		947EC04A260901AA00CAED56 /* Roboto-Black copy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black copy.ttf"; sourceTree = "<group>"; };
 		947EC0782609086900CAED56 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		947EC07F26091E1E00CAED56 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
+		947EC0862609301C00CAED56 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		947EC08D2609302D00CAED56 /* SpotifyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyService.swift; sourceTree = "<group>"; };
+		947EC094260935E400CAED56 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		947EC09B2609481700CAED56 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +218,8 @@
 			children = (
 				947EC025260900A200CAED56 /* AuthManager.swift */,
 				947EC02A260900B800CAED56 /* APICaller.swift */,
+				947EC0862609301C00CAED56 /* WeatherService.swift */,
+				947EC08D2609302D00CAED56 /* SpotifyService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -222,6 +240,7 @@
 				947EBFE22608FC0B00CAED56 /* Assets.xcassets */,
 				947EBFD92608FC0900CAED56 /* AppDelegate.swift */,
 				947EBFE72608FC0B00CAED56 /* Info.plist */,
+				947EC09B2609481700CAED56 /* Extensions.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -244,6 +263,7 @@
 				947EC0342609010700CAED56 /* AudioTrack.swift */,
 				947EC0392609011900CAED56 /* UserProfile.swift */,
 				947EC07F26091E1E00CAED56 /* AuthResponse.swift */,
+				947EC094260935E400CAED56 /* Weather.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -437,14 +457,18 @@
 				947EC0212609007200CAED56 /* HomeViewController.swift in Sources */,
 				947EC026260900A200CAED56 /* AuthManager.swift in Sources */,
 				947EC03A2609011900CAED56 /* UserProfile.swift in Sources */,
+				947EC095260935E400CAED56 /* Weather.swift in Sources */,
+				947EC08E2609302D00CAED56 /* SpotifyService.swift in Sources */,
 				947EC0192608FF8D00CAED56 /* LoginViewController.swift in Sources */,
 				947EC030260900F000CAED56 /* Playlist.swift in Sources */,
 				947EC02B260900B800CAED56 /* APICaller.swift in Sources */,
 				947EBFDE2608FC0900CAED56 /* ViewController.swift in Sources */,
 				947EBFDA2608FC0900CAED56 /* AppDelegate.swift in Sources */,
+				947EC09C2609481700CAED56 /* Extensions.swift in Sources */,
 				947EBFDC2608FC0900CAED56 /* SceneDelegate.swift in Sources */,
 				947EC08026091E1E00CAED56 /* AuthResponse.swift in Sources */,
 				947EC0352609010700CAED56 /* AudioTrack.swift in Sources */,
+				947EC0872609301C00CAED56 /* WeatherService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,9 +476,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				947EC08F2609302D00CAED56 /* SpotifyService.swift in Sources */,
+				947EC0882609301C00CAED56 /* WeatherService.swift in Sources */,
 				947EC07A2609086900CAED56 /* AuthViewController.swift in Sources */,
 				947EC08126091E1E00CAED56 /* AuthResponse.swift in Sources */,
+				947EC096260935E400CAED56 /* Weather.swift in Sources */,
 				947EBFF12608FC0C00CAED56 /* WeatherifyTests.swift in Sources */,
+				947EC09D2609481700CAED56 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,9 +490,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				947EC0902609302D00CAED56 /* SpotifyService.swift in Sources */,
+				947EC0892609301C00CAED56 /* WeatherService.swift in Sources */,
 				947EC07B2609086900CAED56 /* AuthViewController.swift in Sources */,
 				947EC08226091E1E00CAED56 /* AuthResponse.swift in Sources */,
+				947EC097260935E400CAED56 /* Weather.swift in Sources */,
 				947EBFFC2608FC0C00CAED56 /* WeatherifyUITests.swift in Sources */,
+				947EC09E2609481700CAED56 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
