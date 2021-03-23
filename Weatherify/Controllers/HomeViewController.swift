@@ -17,6 +17,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     var weatherResult: Result?
     var city: String?
     var country: String?
+    
+    var recommendedTracks = [AudioTrack]()
 
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
@@ -28,7 +30,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var songsCollectionView: UICollectionView!
     @IBOutlet weak var songsCollectionView2: UICollectionView!
     
-    let dummyData: [AudioTrack] = [AudioTrack.init(albumCover: nil, title: "See You Again (feat. Kali Uchis)", artist: "Tyler, The Creator, Kail Uchis"), AudioTrack.init(albumCover: nil, title: "What a time (feat. Niall Horan)", artist: "Julia Michaels, Niall Horan"), AudioTrack.init(albumCover: nil, title: "Song Title", artist: "Artist Name"), AudioTrack.init(albumCover: nil, title: "Song Title2", artist: "Artist Name2")]
+    let dummyData: [AudioTrackTemp] = [AudioTrackTemp.init(albumCover: nil, title: "See You Again (feat. Kali Uchis)", artist: "Tyler, The Creator, Kail Uchis"), AudioTrackTemp.init(albumCover: nil, title: "What a time (feat. Niall Horan)", artist: "Julia Michaels, Niall Horan"), AudioTrackTemp.init(albumCover: nil, title: "Song Title", artist: "Artist Name"), AudioTrackTemp.init(albumCover: nil, title: "Song Title2", artist: "Artist Name2")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +50,14 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
                 }
             }
         }
+        
+//        SpotifyService.shared.searchSongs(key: "chill", genre: "pop") { [weak self] (songs, error) in
+//            print(songs ?? error)
+//        }
+        
+//        SpotifyService.shared.getRecommendations(genres: ["pop", "edm"]) { (albums, error) in
+//            print(albums)
+//        }
         
         songsCollectionView.delegate = self
         songsCollectionView.dataSource = self
@@ -113,6 +123,51 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     
+    func queryByGenre(genres: Set<String>) {
+        SpotifyService.shared.getRecommendations(genres: genres) { [weak self] (tracks, error) in
+            DispatchQueue.main.async {
+                if let tracks = tracks, error == nil {
+                    self?.recommendedTracks = tracks.tracks
+                    print(self?.recommendedTracks ?? "")
+                    print(self?.recommendedTracks.count ?? -1)
+                    self?.songsCollectionView.reloadData()
+                    self?.songsCollectionView2.reloadData()
+                } else {
+                    print(error ?? "")
+                }
+            }
+        }
+    }
+    
+    func getRecommendedSongsByGenre() {
+        /* winter jazz music */
+        guard weatherResult != nil else {
+            return
+        }
+        let description = weatherResult!.current.weather[0].description
+        switch description {
+        case "clear sky":
+            queryByGenre(genres: ["pop", "hip-hop", "summer", "happy"])
+        case "few clouds":
+            queryByGenre(genres: ["pop", "hip-hop", "soul", "party"])
+        case "mist":
+            queryByGenre(genres: ["jazz", "chill", "blues"])
+        case "scattered clouds":
+            fallthrough
+        case "broken clouds":
+            queryByGenre(genres: ["chill", "pop", "indie", "indie-pop"])
+        case "shower rain":
+            queryByGenre(genres: ["rainy-day", "chill", "acoustic", "soul"])
+        case "rain":
+            queryByGenre(genres: ["rainy-day", "chill", "acoustic"])
+        case "thunderstorm":
+            queryByGenre(genres: ["rock", "sleep", "metal"])
+        case "snow":
+            queryByGenre(genres: ["chill", "classical", "metal", "jazz"])
+        default:
+            queryByGenre(genres: ["chill", "pop", "party", "jazz", "classical", "indie"])
+        }
+    }
     
     func updateWeatherImage() {
         guard weatherResult != nil else {
@@ -160,6 +215,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         updateLocationLabel()
         updateWeatherImage()
         self.removeSpinner()
+        getRecommendedSongsByGenre()
     }
     
     func getWeather() {
@@ -229,7 +285,28 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dummyData.count/2
+//        return dummyData.count/2
+        return recommendedTracks.count/2
+    }
+    
+    func setUpCell(track: AudioTrack, cell: SongCollectionViewCell) -> UICollectionViewCell{
+        var nameText = track.name
+        if track.artists.count > 1 {
+            nameText += "(feat. "
+            for i in 1...track.artists.count-1 {
+                nameText += track.artists[i].name + ", "
+            }
+            nameText = String(nameText.dropLast(2))
+            nameText += ")"
+        }
+        cell.title.text = track.name
+        
+        var artistText = ""
+        for artist in track.artists {
+            artistText += artist.name + ", "
+        }
+        cell.artist.text = String(artistText.dropLast(2))
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -237,18 +314,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "songCell", for: indexPath) as! SongCollectionViewCell
             let index = indexPath.row
             
-            cell.title.text = dummyData[index*2].title
-            cell.artist.text = dummyData[index*2].artist
-            
-            return cell
+            return setUpCell(track: recommendedTracks[index*2], cell: cell)
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "songCell2", for: indexPath) as! SongCollectionViewCell
             let index = indexPath.row
             
-            cell.title.text = dummyData[(index*2)+1].title
-            cell.artist.text = dummyData[(index*2)+1].artist
-            
-            return cell
+            return setUpCell(track: recommendedTracks[(index*2)+1], cell: cell)
         }
     }
 

@@ -264,19 +264,18 @@ for your music based on the weather outside</string>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See You Again (feat. Kali Uchis) " lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fH-NT-uIJ">
-                                                    <rect key="frame" x="139" y="10" width="178" height="40"/>
+                                                    <rect key="frame" x="139" y="10" width="178" height="33"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="ixd-wW-gAG"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="ixd-wW-gAG"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tyler, The Creator, Kail Uchis" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="nr8-OU-jOR">
-                                                    <rect key="frame" x="139" y="53" width="178" height="12"/>
+                                                    <rect key="frame" x="139" y="46" width="178" height="12"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="12" id="XIc-UX-GIa"/>
-                                                        <constraint firstAttribute="height" constant="12" id="eHx-8V-R2j"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="24" id="XIc-UX-GIa"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="10"/>
                                                     <color key="textColor" red="0.70196078429999997" green="0.70196078429999997" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -347,19 +346,18 @@ for your music based on the weather outside</string>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See You Again (feat. Kali Uchis) " lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACK-jz-zXK">
-                                                    <rect key="frame" x="139" y="10" width="178" height="40"/>
+                                                    <rect key="frame" x="139" y="10" width="178" height="33"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="Qdz-2H-hMw"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="Qdz-2H-hMw"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tyler, The Creator, Kail Uchis" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="54M-zD-UL4">
-                                                    <rect key="frame" x="139" y="53" width="178" height="12"/>
+                                                    <rect key="frame" x="139" y="46" width="178" height="12"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="12" id="EhW-DQ-IeV"/>
-                                                        <constraint firstAttribute="height" constant="12" id="ZBa-jp-FIG"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="24" id="EhW-DQ-IeV"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="10"/>
                                                     <color key="textColor" red="0.70196078429999997" green="0.70196078429999997" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

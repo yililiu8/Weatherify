@@ -6,3 +6,28 @@
 //
 
 import Foundation
+
+struct AudioTrackTemp: Codable {
+    var albumCover: String?
+    var title: String
+    var artist: String
+    
+    init(albumCover: String?, title: String, artist: String) {
+        self.albumCover = albumCover
+        self.title = title
+        self.artist = artist
+    }
+}
+
+struct AudioTrack: Codable {
+    let album: Album
+    let artists: [Artist]
+    let available_markets: [String]
+    let disc_number: Int
+    let duration_ms: Int
+    let explicit: Bool
+    let external_urls: [String: String]
+    let id: String
+    let name: String
+    let popularity: Int
+}

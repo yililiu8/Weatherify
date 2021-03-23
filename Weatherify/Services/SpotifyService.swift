@@ -34,6 +34,65 @@ final class SpotifyService {
         }
     }
     
+    public func searchSongs(key: String, genre: String?, completion: @escaping (SearchResultResponse?, Error?) -> Void) {
+        guard let urlKey = key.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            return
+        }
+        guard genre != nil, var urlGenre = genre!.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            return
+        }
+        if genre != nil {
+            urlGenre = "%20genre:%22" + urlGenre + "%22"
+        } else {
+            urlGenre = ""
+        }
+        createRequest(with: URL(string: SpotifyService.baseAPIURL + "/search?q=\(urlKey)\(urlGenre)&type=track&limit=20"), type: .GET) { (baseRequest) in
+            let task = URLSession.shared.dataTask(with: baseRequest) { (data, _, error) in
+                guard let data = data, error == nil else {
+                    completion(nil, APIError.failedToGetData)
+                    return
+                }
+
+                do {
+                    let res = try JSONDecoder().decode(SearchResultResponse.self, from: data)
+//                    let res = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                    print(res)
+                    print("successful search for tracks")
+                    completion(res, nil)
+                } catch {
+                    print(error)
+                    completion(nil, error)
+                }
+            }
+            task.resume()
+        }
+    }
+
+    /* returns tracks given a certain genre */
+    public func getRecommendations(genres: Set<String>, completion: @escaping (RecommendationsReponse?, Error?) -> Void) {
+        let seeds = genres.joined(separator: ",")
+        print("getting recommendations...")
+        createRequest(with: URL(string: SpotifyService.baseAPIURL + "/recommendations?seed_genres=\(seeds)&limit=10"), type: .GET) { (baseRequest) in
+            let task = URLSession.shared.dataTask(with: baseRequest) { (data, _, error) in
+                guard let data = data, error == nil else {
+                    completion(nil, APIError.failedToGetData)
+                    return
+                }
+
+                do {
+                    let res = try JSONDecoder().decode(RecommendationsReponse.self, from: data)
+//                    let res = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                    print(res)
+                    completion(res, nil)
+                } catch {
+                    print(error)
+                    completion(nil, error)
+                }
+            }
+            task.resume()
+        }
+    }
+    
     public func getCurrentUserProfile(completion: @escaping (UserProfile?, Error?) -> Void) {
         createRequest(with: URL(string: SpotifyService.baseAPIURL + "/me"), type: .GET) { (baseRequest) in
             let task = URLSession.shared.dataTask(with: baseRequest) { (data, _, error) in

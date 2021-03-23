@@ -84,6 +84,10 @@
 		947EC0C82609928A00CAED56 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC0C72609928A00CAED56 /* Constants.swift */; };
 		947EC0C92609928A00CAED56 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC0C72609928A00CAED56 /* Constants.swift */; };
 		947EC0CA2609928A00CAED56 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC0C72609928A00CAED56 /* Constants.swift */; };
+		947EC0CF260A4BF900CAED56 /* SearchResultResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC0CE260A4BF900CAED56 /* SearchResultResponse.swift */; };
+		947EC0D7260A4E3800CAED56 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC0D6260A4E3800CAED56 /* Album.swift */; };
+		947EC0DC260A4F9900CAED56 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC0DB260A4F9900CAED56 /* Artist.swift */; };
+		947EC0E4260A538600CAED56 /* RecommendationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC0E3260A538600CAED56 /* RecommendationsResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +149,10 @@
 		947EC0A226094D9E00CAED56 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		947EC0B026097A4D00CAED56 /* SongCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongCollectionViewCell.swift; sourceTree = "<group>"; };
 		947EC0C72609928A00CAED56 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		947EC0CE260A4BF900CAED56 /* SearchResultResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultResponse.swift; sourceTree = "<group>"; };
+		947EC0D6260A4E3800CAED56 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		947EC0DB260A4F9900CAED56 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
+		947EC0E3260A538600CAED56 /* RecommendationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +284,10 @@
 				947EC0392609011900CAED56 /* UserProfile.swift */,
 				947EC07F26091E1E00CAED56 /* AuthResponse.swift */,
 				947EC094260935E400CAED56 /* Weather.swift */,
+				947EC0CE260A4BF900CAED56 /* SearchResultResponse.swift */,
+				947EC0D6260A4E3800CAED56 /* Album.swift */,
+				947EC0DB260A4F9900CAED56 /* Artist.swift */,
+				947EC0E3260A538600CAED56 /* RecommendationsResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -471,14 +483,18 @@
 				947EC026260900A200CAED56 /* AuthManager.swift in Sources */,
 				947EC03A2609011900CAED56 /* UserProfile.swift in Sources */,
 				947EC095260935E400CAED56 /* Weather.swift in Sources */,
+				947EC0DC260A4F9900CAED56 /* Artist.swift in Sources */,
 				947EC08E2609302D00CAED56 /* SpotifyService.swift in Sources */,
 				947EC0192608FF8D00CAED56 /* LoginViewController.swift in Sources */,
 				947EC030260900F000CAED56 /* Playlist.swift in Sources */,
+				947EC0E4260A538600CAED56 /* RecommendationsResponse.swift in Sources */,
+				947EC0CF260A4BF900CAED56 /* SearchResultResponse.swift in Sources */,
 				947EBFDE2608FC0900CAED56 /* ViewController.swift in Sources */,
 				947EBFDA2608FC0900CAED56 /* AppDelegate.swift in Sources */,
 				947EC09C2609481700CAED56 /* Extensions.swift in Sources */,
 				947EC0A326094D9E00CAED56 /* SettingsViewController.swift in Sources */,
 				947EBFDC2608FC0900CAED56 /* SceneDelegate.swift in Sources */,
+				947EC0D7260A4E3800CAED56 /* Album.swift in Sources */,
 				947EC08026091E1E00CAED56 /* AuthResponse.swift in Sources */,
 				947EC0352609010700CAED56 /* AudioTrack.swift in Sources */,
 				947EC0872609301C00CAED56 /* WeatherService.swift in Sources */,
