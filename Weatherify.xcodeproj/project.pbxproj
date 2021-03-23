@@ -92,6 +92,9 @@
 		947EC0DC260A4F9900CAED56 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC0DB260A4F9900CAED56 /* Artist.swift */; };
 		947EC0E4260A538600CAED56 /* RecommendationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC0E3260A538600CAED56 /* RecommendationsResponse.swift */; };
 		947EC0F3260A7D5A00CAED56 /* PlaylistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC0F2260A7D5A00CAED56 /* PlaylistTableViewCell.swift */; };
+		947EC0F8260A892300CAED56 /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC0F7260A892300CAED56 /* PlaylistViewController.swift */; };
+		947EC0FD260A947900CAED56 /* CustomPlaylistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC0FC260A947900CAED56 /* CustomPlaylistTableViewCell.swift */; };
+		947EC102260A9AC000CAED56 /* LibraryPlaylistResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC101260A9AC000CAED56 /* LibraryPlaylistResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,6 +166,9 @@
 		947EC0DB260A4F9900CAED56 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		947EC0E3260A538600CAED56 /* RecommendationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsResponse.swift; sourceTree = "<group>"; };
 		947EC0F2260A7D5A00CAED56 /* PlaylistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistTableViewCell.swift; sourceTree = "<group>"; };
+		947EC0F7260A892300CAED56 /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
+		947EC0FC260A947900CAED56 /* CustomPlaylistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPlaylistTableViewCell.swift; sourceTree = "<group>"; };
+		947EC101260A9AC000CAED56 /* LibraryPlaylistResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPlaylistResponse.swift; sourceTree = "<group>"; };
 		D590E035ADEFBA4483698F1D /* Pods-Weatherify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weatherify.release.xcconfig"; path = "Target Support Files/Pods-Weatherify/Pods-Weatherify.release.xcconfig"; sourceTree = "<group>"; };
 		F3024039D7310EF423373FD0 /* Pods-WeatherifyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherifyTests.release.xcconfig"; path = "Target Support Files/Pods-WeatherifyTests/Pods-WeatherifyTests.release.xcconfig"; sourceTree = "<group>"; };
 		FEFC5A8449DF33AAC0D2A51A /* Pods-Weatherify-WeatherifyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weatherify-WeatherifyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Weatherify-WeatherifyUITests/Pods-Weatherify-WeatherifyUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -279,6 +285,7 @@
 				947EBFE42608FC0B00CAED56 /* LaunchScreen.storyboard */,
 				947EC0B026097A4D00CAED56 /* SongCollectionViewCell.swift */,
 				947EC0F2260A7D5A00CAED56 /* PlaylistTableViewCell.swift */,
+				947EC0FC260A947900CAED56 /* CustomPlaylistTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -305,6 +312,7 @@
 				947EC0202609007200CAED56 /* HomeViewController.swift */,
 				947EC0782609086900CAED56 /* AuthViewController.swift */,
 				947EC0A226094D9E00CAED56 /* SettingsViewController.swift */,
+				947EC0F7260A892300CAED56 /* PlaylistViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -321,6 +329,7 @@
 				947EC0D6260A4E3800CAED56 /* Album.swift */,
 				947EC0DB260A4F9900CAED56 /* Artist.swift */,
 				947EC0E3260A538600CAED56 /* RecommendationsResponse.swift */,
+				947EC101260A9AC000CAED56 /* LibraryPlaylistResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -628,6 +637,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				947EC102260A9AC000CAED56 /* LibraryPlaylistResponse.swift in Sources */,
 				947EC0792609086900CAED56 /* AuthViewController.swift in Sources */,
 				947EC0212609007200CAED56 /* HomeViewController.swift in Sources */,
 				947EC0F3260A7D5A00CAED56 /* PlaylistTableViewCell.swift in Sources */,
@@ -636,7 +646,9 @@
 				947EC03A2609011900CAED56 /* UserProfile.swift in Sources */,
 				947EC095260935E400CAED56 /* Weather.swift in Sources */,
 				947EC0DC260A4F9900CAED56 /* Artist.swift in Sources */,
+				947EC0F8260A892300CAED56 /* PlaylistViewController.swift in Sources */,
 				947EC08E2609302D00CAED56 /* SpotifyService.swift in Sources */,
+				947EC0FD260A947900CAED56 /* CustomPlaylistTableViewCell.swift in Sources */,
 				947EC0192608FF8D00CAED56 /* LoginViewController.swift in Sources */,
 				947EC030260900F000CAED56 /* Playlist.swift in Sources */,
 				947EC0E4260A538600CAED56 /* RecommendationsResponse.swift in Sources */,

@@ -23,7 +23,8 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func backBtn(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
+//        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func logoutBtn(_ sender: Any) {

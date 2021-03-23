@@ -19,6 +19,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     var country: String?
     
     var recommendedTracks = [AudioTrack]()
+    var customPlaylistTracks = [AudioTrack]()
     var recommendedPlaylists = [Playlist]()
     var refreshingWeatherData = false
     var shouldUpdateSpotifyTracks = false
@@ -163,8 +164,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
                 DispatchQueue.main.async {
                     if let playlists = playlists, error == nil {
                         self?.recommendedPlaylists.append(contentsOf: playlists.playlists?.items ?? [Playlist]())
-                        self?.recommendedPlaylists.shuffle()
                         if self?.recommendedPlaylists.count == 6 {
+                            self?.recommendedPlaylists.shuffle()
                             self?.playlistTableView.reloadData()
                         }
                     } else {
@@ -329,8 +330,82 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         getWeather()
     }
     
-    @IBAction func generatePlaylist(_ sender: Any) {
+    func generatePlaylist(genres: Set<String>, weather: String) {
+        let df = DateFormatter()
+        df.dateFormat = "MM-dd-yy hh:mm:ss"
+        let day = df.string(from: Date())
         
+        let name = weather + " " + day
+        SpotifyService.shared.createPlaylist(with: name) { [weak self] (id, error) in
+            DispatchQueue.main.async {
+                if let id = id, error == nil {
+                    SpotifyService.shared.getRecommendations(genres: genres) { [weak self] (tracks, error) in
+                        if let tracks = tracks, error == nil {
+                            self?.customPlaylistTracks = tracks.tracks
+                            SpotifyService.shared.addTrackToPlaylist(tracks: tracks.tracks, playlistID: id) { (result) in
+                                if result {
+                                    print("successfully added item to playlist")
+                                    DispatchQueue.main.async {
+                                        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                                        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "playlistView") as! PlaylistViewController
+                                        nextViewController.modalPresentationStyle = .fullScreen
+                                        nextViewController.modalTransitionStyle = .coverVertical
+                                        nextViewController.playlist = tracks.tracks
+                                        nextViewController.playlist_name = name
+                                        nextViewController.playlist_id = id
+                                        
+                                        self?.present(nextViewController, animated:true)
+                                    }
+                                } else {
+                                    print("failed to add item to playlist")
+                                }
+                            }
+                        } else {
+                            print(error ?? "")
+                        }
+                    }
+                } else {
+                    print(error ?? "")
+                }
+            }
+        }
+//        SpotifyService.shared.getRecommendations(genres: genres) { [weak self] (tracks, error) in
+//            if let tracks = tracks, error == nil {
+//                self?.customPlaylistTracks = tracks.tracks
+//
+//            } else {
+//                print(error ?? "")
+//            }
+//        }
+    }
+    
+    @IBAction func generatePlaylist(_ sender: Any) {
+        guard weatherResult != nil else {
+            return
+        }
+        let description = weatherResult!.current.weather[0].description
+        switch description {
+        case "clear sky":
+            generatePlaylist(genres: ["pop", "hip-hop", "summer", "happy"], weather: "Sunny")
+        case "few clouds":
+            generatePlaylist(genres: ["pop", "hip-hop", "soul", "party"], weather: "Partly Cloudy")
+        case "mist":
+            generatePlaylist(genres: ["jazz", "chill", "blues"], weather: "Cloudy")
+        case "scattered clouds":
+            fallthrough
+        case "broken clouds":
+            generatePlaylist(genres: ["chill", "pop", "indie", "indie-pop"], weather: "Cloudy")
+        case "shower rain":
+            generatePlaylist(genres: ["rainy-day", "chill", "acoustic", "soul"], weather: "Rainy")
+        case "rain":
+            generatePlaylist(genres: ["rainy-day", "chill", "acoustic"], weather: "Rainy")
+        case "thunderstorm":
+            generatePlaylist(genres: ["rock", "sleep", "metal"], weather: "Thundering")
+        case "snow":
+            generatePlaylist(genres: ["chill", "classical", "metal", "jazz"], weather: "Snowy")
+        default:
+            generatePlaylist(genres: ["chill", "pop", "party", "jazz", "classical", "indie"], weather: "WEATHER")
+        }
     }
     
     @IBAction func openSpotify(_ sender: Any) {
