@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B6A572EBFFDA521EA1DCF93 /* Pods_Weatherify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50D4F3D10D5859E8193DE487 /* Pods_Weatherify.framework */; };
+		3E704C3BB53525593ED9FD42 /* Pods_WeatherifyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 715D0A2D92D73A1C7FBC992D /* Pods_WeatherifyTests.framework */; };
+		6B7B715B8FE3F3B66CC4FC1F /* Pods_Weatherify_WeatherifyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF827CE2008F673F2A12D598 /* Pods_Weatherify_WeatherifyUITests.framework */; };
 		947EBFDA2608FC0900CAED56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EBFD92608FC0900CAED56 /* AppDelegate.swift */; };
 		947EBFDC2608FC0900CAED56 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EBFDB2608FC0900CAED56 /* SceneDelegate.swift */; };
 		947EBFDE2608FC0900CAED56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EBFDD2608FC0900CAED56 /* ViewController.swift */; };
@@ -88,6 +91,7 @@
 		947EC0D7260A4E3800CAED56 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC0D6260A4E3800CAED56 /* Album.swift */; };
 		947EC0DC260A4F9900CAED56 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC0DB260A4F9900CAED56 /* Artist.swift */; };
 		947EC0E4260A538600CAED56 /* RecommendationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC0E3260A538600CAED56 /* RecommendationsResponse.swift */; };
+		947EC0F3260A7D5A00CAED56 /* PlaylistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC0F2260A7D5A00CAED56 /* PlaylistTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +112,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0FCCF2FB1C8489F4DEAAB988 /* Pods-WeatherifyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherifyTests.debug.xcconfig"; path = "Target Support Files/Pods-WeatherifyTests/Pods-WeatherifyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		12848948B802936B71116ACE /* Pods-Weatherify-WeatherifyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weatherify-WeatherifyUITests.release.xcconfig"; path = "Target Support Files/Pods-Weatherify-WeatherifyUITests/Pods-Weatherify-WeatherifyUITests.release.xcconfig"; sourceTree = "<group>"; };
+		31932D34B28F270DE99E78F3 /* Pods-Weatherify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weatherify.debug.xcconfig"; path = "Target Support Files/Pods-Weatherify/Pods-Weatherify.debug.xcconfig"; sourceTree = "<group>"; };
+		50D4F3D10D5859E8193DE487 /* Pods_Weatherify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weatherify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		715D0A2D92D73A1C7FBC992D /* Pods_WeatherifyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherifyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		947EBFD62608FC0900CAED56 /* Weatherify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weatherify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		947EBFD92608FC0900CAED56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		947EBFDB2608FC0900CAED56 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -153,6 +162,11 @@
 		947EC0D6260A4E3800CAED56 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		947EC0DB260A4F9900CAED56 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		947EC0E3260A538600CAED56 /* RecommendationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsResponse.swift; sourceTree = "<group>"; };
+		947EC0F2260A7D5A00CAED56 /* PlaylistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistTableViewCell.swift; sourceTree = "<group>"; };
+		D590E035ADEFBA4483698F1D /* Pods-Weatherify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weatherify.release.xcconfig"; path = "Target Support Files/Pods-Weatherify/Pods-Weatherify.release.xcconfig"; sourceTree = "<group>"; };
+		F3024039D7310EF423373FD0 /* Pods-WeatherifyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherifyTests.release.xcconfig"; path = "Target Support Files/Pods-WeatherifyTests/Pods-WeatherifyTests.release.xcconfig"; sourceTree = "<group>"; };
+		FEFC5A8449DF33AAC0D2A51A /* Pods-Weatherify-WeatherifyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weatherify-WeatherifyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Weatherify-WeatherifyUITests/Pods-Weatherify-WeatherifyUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FF827CE2008F673F2A12D598 /* Pods_Weatherify_WeatherifyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weatherify_WeatherifyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +174,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B6A572EBFFDA521EA1DCF93 /* Pods_Weatherify.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +182,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E704C3BB53525593ED9FD42 /* Pods_WeatherifyTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,12 +190,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B7B715B8FE3F3B66CC4FC1F /* Pods_Weatherify_WeatherifyUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8343DADD66D8F15BCB83C294 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				31932D34B28F270DE99E78F3 /* Pods-Weatherify.debug.xcconfig */,
+				D590E035ADEFBA4483698F1D /* Pods-Weatherify.release.xcconfig */,
+				FEFC5A8449DF33AAC0D2A51A /* Pods-Weatherify-WeatherifyUITests.debug.xcconfig */,
+				12848948B802936B71116ACE /* Pods-Weatherify-WeatherifyUITests.release.xcconfig */,
+				0FCCF2FB1C8489F4DEAAB988 /* Pods-WeatherifyTests.debug.xcconfig */,
+				F3024039D7310EF423373FD0 /* Pods-WeatherifyTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		947EBFCD2608FC0900CAED56 = {
 			isa = PBXGroup;
 			children = (
@@ -187,6 +217,8 @@
 				947EBFEF2608FC0C00CAED56 /* WeatherifyTests */,
 				947EBFFA2608FC0C00CAED56 /* WeatherifyUITests */,
 				947EBFD72608FC0900CAED56 /* Products */,
+				8343DADD66D8F15BCB83C294 /* Pods */,
+				E7240963C22173585A26DD3E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -246,6 +278,7 @@
 			children = (
 				947EBFE42608FC0B00CAED56 /* LaunchScreen.storyboard */,
 				947EC0B026097A4D00CAED56 /* SongCollectionViewCell.swift */,
+				947EC0F2260A7D5A00CAED56 /* PlaylistTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -311,6 +344,16 @@
 			path = Roboto;
 			sourceTree = "<group>";
 		};
+		E7240963C22173585A26DD3E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				50D4F3D10D5859E8193DE487 /* Pods_Weatherify.framework */,
+				FF827CE2008F673F2A12D598 /* Pods_Weatherify_WeatherifyUITests.framework */,
+				715D0A2D92D73A1C7FBC992D /* Pods_WeatherifyTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -318,9 +361,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 947EC0002608FC0C00CAED56 /* Build configuration list for PBXNativeTarget "Weatherify" */;
 			buildPhases = (
+				C009885F1667577A083DBC0B /* [CP] Check Pods Manifest.lock */,
 				947EBFD22608FC0900CAED56 /* Sources */,
 				947EBFD32608FC0900CAED56 /* Frameworks */,
 				947EBFD42608FC0900CAED56 /* Resources */,
+				74FAC73CAE7ABBF7728627D5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -335,6 +380,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 947EC0032608FC0C00CAED56 /* Build configuration list for PBXNativeTarget "WeatherifyTests" */;
 			buildPhases = (
+				854FC23DE5E48835A476532F /* [CP] Check Pods Manifest.lock */,
 				947EBFE82608FC0C00CAED56 /* Sources */,
 				947EBFE92608FC0C00CAED56 /* Frameworks */,
 				947EBFEA2608FC0C00CAED56 /* Resources */,
@@ -353,9 +399,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 947EC0062608FC0C00CAED56 /* Build configuration list for PBXNativeTarget "WeatherifyUITests" */;
 			buildPhases = (
+				11201D305FACC8DE940F9BA5 /* [CP] Check Pods Manifest.lock */,
 				947EBFF32608FC0C00CAED56 /* Sources */,
 				947EBFF42608FC0C00CAED56 /* Frameworks */,
 				947EBFF52608FC0C00CAED56 /* Resources */,
+				9134DE725D74C132A0B5059F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -472,6 +520,109 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		11201D305FACC8DE940F9BA5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Weatherify-WeatherifyUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		74FAC73CAE7ABBF7728627D5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Weatherify/Pods-Weatherify-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Weatherify/Pods-Weatherify-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Weatherify/Pods-Weatherify-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		854FC23DE5E48835A476532F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WeatherifyTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9134DE725D74C132A0B5059F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Weatherify-WeatherifyUITests/Pods-Weatherify-WeatherifyUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Weatherify-WeatherifyUITests/Pods-Weatherify-WeatherifyUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Weatherify-WeatherifyUITests/Pods-Weatherify-WeatherifyUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C009885F1667577A083DBC0B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Weatherify-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		947EBFD22608FC0900CAED56 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -479,6 +630,7 @@
 			files = (
 				947EC0792609086900CAED56 /* AuthViewController.swift in Sources */,
 				947EC0212609007200CAED56 /* HomeViewController.swift in Sources */,
+				947EC0F3260A7D5A00CAED56 /* PlaylistTableViewCell.swift in Sources */,
 				947EC0B126097A4D00CAED56 /* SongCollectionViewCell.swift in Sources */,
 				947EC026260900A200CAED56 /* AuthManager.swift in Sources */,
 				947EC03A2609011900CAED56 /* UserProfile.swift in Sources */,
@@ -689,6 +841,7 @@
 		};
 		947EC0012608FC0C00CAED56 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31932D34B28F270DE99E78F3 /* Pods-Weatherify.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -708,6 +861,7 @@
 		};
 		947EC0022608FC0C00CAED56 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D590E035ADEFBA4483698F1D /* Pods-Weatherify.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -727,6 +881,7 @@
 		};
 		947EC0042608FC0C00CAED56 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0FCCF2FB1C8489F4DEAAB988 /* Pods-WeatherifyTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -749,6 +904,7 @@
 		};
 		947EC0052608FC0C00CAED56 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F3024039D7310EF423373FD0 /* Pods-WeatherifyTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -771,6 +927,7 @@
 		};
 		947EC0072608FC0C00CAED56 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FEFC5A8449DF33AAC0D2A51A /* Pods-Weatherify-WeatherifyUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -791,6 +948,7 @@
 		};
 		947EC0082608FC0C00CAED56 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12848948B802936B71116ACE /* Pods-Weatherify-WeatherifyUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

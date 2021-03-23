@@ -67,6 +67,33 @@ final class SpotifyService {
             task.resume()
         }
     }
+    
+    
+    public func searchPlaylists(key: String, completion: @escaping (SearchResultResponse?, Error?) -> Void) {
+        guard let urlKey = key.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            return
+        }
+        createRequest(with: URL(string: SpotifyService.baseAPIURL + "/search?q=\(urlKey)&type=playlist&limit=2"), type: .GET) { (baseRequest) in
+            let task = URLSession.shared.dataTask(with: baseRequest) { (data, _, error) in
+                guard let data = data, error == nil else {
+                    completion(nil, APIError.failedToGetData)
+                    return
+                }
+
+                do {
+                    let res = try JSONDecoder().decode(SearchResultResponse.self, from: data)
+//                    let res = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                    print(res)
+                    print("successful search for tracks")
+                    completion(res, nil)
+                } catch {
+                    print(error)
+                    completion(nil, error)
+                }
+            }
+            task.resume()
+        }
+    }
 
     /* returns tracks given a certain genre */
     public func getRecommendations(genres: Set<String>, completion: @escaping (RecommendationsReponse?, Error?) -> Void) {
