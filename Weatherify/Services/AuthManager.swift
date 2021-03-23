@@ -18,12 +18,15 @@ final class AuthManager {
     static let tokenAPIURL = "https://accounts.spotify.com/api/token"
     static let redirectURI = "https://github.com/yililiu8"
     
+    private var refreshingToken = false
+    
     private init() {}
     public var signInURL: URL? {
         let scopes = "user-read-private%20user-read-email%20playlist-modify-private%20playlist-read-private%20playlist-modify-public%20user-follow-read%20user-library-modify%20user-library-read"
         let base = "https://accounts.spotify.com/authorize"
         var str = "\(base)?response_type=code&client_id=\(ids.clientID)"
         str += "&scope=\(scopes)&redirect_uri=\(AuthManager.redirectURI)"
+        str += "&show_dialog=true"
         return URL(string: str)
     }
     
@@ -59,7 +62,31 @@ final class AuthManager {
         UserDefaults.standard.setValue(Date().addingTimeInterval(TimeInterval(result.expires_in)) , forKey: "expirationDate")
     }
     
+    private var onRefreshBlocks = [((String) -> Void)]()
+    
+    public func withValidToken(completion: @escaping ((String) -> Void)) {
+        guard !refreshingToken else {
+            onRefreshBlocks.append(completion)
+            return
+        }
+        if shouldRefreshToken {
+            refreshAccessToken { [weak self] (success) in
+                if success {
+                    if let token = self?.accessToken{
+                        completion(token)
+                    }
+                }
+            }
+        } else if let token = accessToken{
+            completion(token)
+        }
+        
+    }
+    
     public func refreshAccessToken(completion: @escaping ((Bool) -> Void)) {
+        guard !refreshingToken else {
+            return
+        }
         guard shouldRefreshToken else {
             completion(true)
             return
@@ -71,6 +98,7 @@ final class AuthManager {
         guard let url = URL(string: AuthManager.tokenAPIURL) else {
             return
         }
+        refreshingToken = true
         
         var components = URLComponents()
         components.queryItems = [URLQueryItem(name: "grant_type", value: "refresh_token"), URLQueryItem(name: "refresh_token", value: refreshToken)]
@@ -95,6 +123,8 @@ final class AuthManager {
             }
             do {
                 let res = try JSONDecoder().decode(AuthResponse.self, from: data)
+                self?.onRefreshBlocks.forEach { $0(res.access_token) }
+                self?.onRefreshBlocks.removeAll()
                 self?.cacheToken(result: res)
                 let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                 print("successfully refreshed cached token: \(json)")

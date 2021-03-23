@@ -8,6 +8,7 @@
 import UIKit
 import CoreLocation
 
+
 class HomeViewController: UIViewController, CLLocationManagerDelegate {
     
     let locationManager = CLLocationManager()
@@ -24,6 +25,10 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var weatherView: UIView!
     @IBOutlet weak var highAndLowTemp: UILabel!
     @IBOutlet weak var playlistBtn: UIButton!
+    @IBOutlet weak var songsCollectionView: UICollectionView!
+    @IBOutlet weak var songsCollectionView2: UICollectionView!
+    
+    let dummyData: [AudioTrack] = [AudioTrack.init(albumCover: nil, title: "See You Again (feat. Kali Uchis)", artist: "Tyler, The Creator, Kail Uchis"), AudioTrack.init(albumCover: nil, title: "What a time (feat. Niall Horan)", artist: "Julia Michaels, Niall Horan"), AudioTrack.init(albumCover: nil, title: "Song Title", artist: "Artist Name"), AudioTrack.init(albumCover: nil, title: "Song Title2", artist: "Artist Name2")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,16 +39,45 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         highAndLowTemp.text = " "
         setupLocation()
         
+        SpotifyService.shared.getCurrentUserProfile { [weak self] (userProfile, error) in
+            DispatchQueue.main.async {
+                if let userProfile = userProfile, error == nil {
+                    self?.updateName(with: userProfile)
+                } else {
+                    print(error ?? "")
+                }
+            }
+        }
+        
+        songsCollectionView.delegate = self
+        songsCollectionView.dataSource = self
+        songsCollectionView.allowsSelection = false
+        songsCollectionView.tag = 1
+        songsCollectionView2.delegate = self
+        songsCollectionView2.dataSource = self
+        songsCollectionView2.allowsSelection = false
+        songsCollectionView2.tag = 2
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updateView), name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+    
+    func updateName(with model: UserProfile) {
+        Constants.user = model
         //welcome label
         let hi = "Hi, "
         let hi_attrs = [NSAttributedString.Key.font :  UIFont.init(name: "Roboto-Bold", size: 35)]
         let welcome = NSMutableAttributedString(string: hi, attributes: hi_attrs as [NSAttributedString.Key : Any])
 
-        let name = "John"
+        let name = model.display_name
         let name_attrs = [NSAttributedString.Key.font : UIFont.init(name: "Roboto-Bold", size: 35), NSAttributedString.Key.foregroundColor : UIColor.init(red: 30.0/255.0, green: 215.0/255.0, blue: 96.0/255.0, alpha: 1.0)]
         let name_string = NSMutableAttributedString(string:name, attributes:name_attrs as [NSAttributedString.Key : Any])
         welcome.append(name_string)
         welcomeLabel.attributedText = welcome
+    }
+    
+    @objc func updateView() {
+        print("update weather")
+        requestWeatherForLocation()
     }
     
     func updateLocationLabel() {
@@ -77,6 +111,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
             requestWeatherForLocation()
         }
     }
+    
+    
     
     func updateWeatherImage() {
         guard weatherResult != nil else {
@@ -146,6 +182,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         guard let currentLocation = userCoordinates else {
             return
         }
+        
         let long = currentLocation.coordinate.longitude
         let lat = currentLocation.coordinate.latitude
         print("coordinates: \(long),\(lat)")
@@ -173,15 +210,62 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func generatePlaylist(_ sender: Any) {
+        
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
     }
-    */
+    
+}
+
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 129)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return dummyData.count/2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if collectionView.tag == 1 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "songCell", for: indexPath) as! SongCollectionViewCell
+            let index = indexPath.row
+            
+            cell.title.text = dummyData[index*2].title
+            cell.artist.text = dummyData[index*2].artist
+            
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "songCell2", for: indexPath) as! SongCollectionViewCell
+            let index = indexPath.row
+            
+            cell.title.text = dummyData[(index*2)+1].title
+            cell.artist.text = dummyData[(index*2)+1].artist
+            
+            return cell
+        }
+    }
+
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.isEqual(songsCollectionView), scrollView.isDragging {
+            self.synchronizeScrollView(songsCollectionView2, toScrollView: songsCollectionView)
+        }
+        else if scrollView.isEqual(songsCollectionView2), scrollView.isDragging {
+            self.synchronizeScrollView(songsCollectionView, toScrollView: songsCollectionView2)
+        }
+    }
+    
+    func synchronizeScrollView(_ scrollViewToScroll: UIScrollView, toScrollView scrolledView: UIScrollView) {
+        var offset = scrollViewToScroll.contentOffset
+        offset.x = scrolledView.contentOffset.x
+        scrollViewToScroll.setContentOffset(offset, animated: false)
+    }
+    
 }
