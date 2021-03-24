@@ -13,6 +13,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loginBtn.imageView?.contentMode = .scaleAspectFit
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     func handleSignIn(success: Bool) {
@@ -23,6 +24,9 @@ class LoginViewController: UIViewController {
             return
         }
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeVC") as! HomeViewController
+//        vc.modalPresentationStyle = .fullScreen
+////        navigationController?.setNavigationBarHidden(false, animated: false)
+//        navigationController?.pushViewController(vc, animated: true)
         vc.modalPresentationStyle = .fullScreen
         vc.modalTransitionStyle = .coverVertical
         self.present(vc, animated:true)
@@ -36,6 +40,9 @@ class LoginViewController: UIViewController {
                 self?.handleSignIn(success: success)
             }
         }
+//        vc.modalPresentationStyle = .fullScreen
+////        navigationController?.setNavigationBarHidden(false, animated: false)
+//        navigationController?.pushViewController(vc, animated: true)
         vc.modalPresentationStyle = .fullScreen
         vc.modalTransitionStyle = .coverVertical
         self.present(vc, animated:true)

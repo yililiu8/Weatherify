@@ -24,7 +24,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     var refreshingWeatherData = false
     var shouldUpdateSpotifyTracks = false
     var previousWeather: String?
-
+    
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var weatherImage: UIImageView!
@@ -37,10 +37,20 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var songsCollectionView2: UICollectionView!
     @IBOutlet weak var playlistTableView: UITableView!
     
-//    let dummyData: [AudioTrackTemp] = [AudioTrackTemp.init(albumCover: nil, title: "See You Again (feat. Kali Uchis)", artist: "Tyler, The Creator, Kail Uchis"), AudioTrackTemp.init(albumCover: nil, title: "What a time (feat. Niall Horan)", artist: "Julia Michaels, Niall Horan"), AudioTrackTemp.init(albumCover: nil, title: "Song Title", artist: "Artist Name"), AudioTrackTemp.init(albumCover: nil, title: "Song Title2", artist: "Artist Name2")]
+    @IBOutlet var slideOutView: UIView!
+    @IBOutlet var slideOutBlackView: UIView!
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    var slideOutBarCollapsed = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        let redViewController = mainStoryBoard .instantiateViewController(withIdentifier: "HomeVC")
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = redViewController
+        
         playlistBtn.imageView?.contentMode = .scaleAspectFit
         weatherTemp.text = " "
         locationLabel.text = " "
@@ -49,30 +59,19 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         songRecommendationsTitle.text = " "
         setupLocation()
         
-        SpotifyService.shared.getCurrentUserProfile { [weak self] (userProfile, error) in
-            DispatchQueue.main.async {
-                if let userProfile = userProfile, error == nil {
-                    self?.updateName(with: userProfile)
-                } else {
-                    print(error ?? "")
-                }
-            }
-        }
+        self.view.addSubview(slideOutBlackView)
+        slideOutBlackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tappedBlackView(_:))))
+        slideOutBlackView.alpha = 0
+        slideOutBlackView.backgroundColor = .black
+        slideOutBlackView.isHidden = true
+        slideOutBlackView.frame = CGRect(x: 0, y:0, width: self.view.bounds.width, height: self.view.bounds.height)
+        self.view.addSubview(slideOutView)
+        slideOutView.frame = CGRect(x: -self.view.bounds.width/2, y:0, width: self.view.bounds.width/2, height: self.view.bounds.height)
+        let gesture = UISwipeGestureRecognizer(target: self, action: #selector(self.handleSwipe(sender:)))
+        gesture.direction = .left
+        self.view.addGestureRecognizer(gesture)
         
-//        SpotifyService.shared.searchPlaylists(key: "winter jazz") { [weak self](playlists, error) in
-//            print(playlists)
-//            DispatchQueue.main.async {
-//                if let playlists = playlists, error == nil {
-//                    self?.recommendedPlaylists = playlists.playlists?.items ?? [Playlist]()
-//                    print(self?.recommendedPlaylists ?? "")
-//                    print(self?.recommendedPlaylists.count ?? -1)
-//                    self?.playlistTableView.reloadData()
-//                } else {
-//                    print(error ?? "")
-//                }
-//            }
-//        }
-    
+        getUserProfile()
         
         songsCollectionView.delegate = self
         songsCollectionView.dataSource = self
@@ -87,6 +86,25 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         playlistTableView.delegate = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateView), name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+    
+    func getUserProfile() {
+        SpotifyService.shared.getCurrentUserProfile { [weak self] (userProfile, error) in
+            DispatchQueue.main.async {
+                if let userProfile = userProfile, error == nil {
+                    self?.updateName(with: userProfile)
+                    self?.nameLabel.text = userProfile.display_name
+                    self?.emailLabel.text = userProfile.email
+                    
+                    guard let image = userProfile.images, !image.isEmpty else {
+                        return
+                    }
+                    self?.profileImage.sd_setImage(with: URL(string: image[0].url), completed: nil)
+                } else {
+                    print(error ?? "")
+                }
+            }
+        }
     }
     
     func updateName(with model: UserProfile) {
@@ -425,11 +443,47 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    //MARK: Slide out Menu
+    @IBAction func menuBtnTapped(_ sender: Any) {
+        toggleMenu()
+    }
+    
+    @objc func tappedBlackView(_ sender: UITapGestureRecognizer) {
+       toggleMenu()
+    }
+    
+    func toggleMenu() {
+        print("Toggle Menu")
+        if(slideOutBarCollapsed) {
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                self.slideOutView.frame.origin.x = 0
+                self.slideOutBlackView.isHidden = false
+                self.slideOutBlackView.alpha = 0.2
+                self.slideOutView.frame.origin.x = 0
+            }, completion: { completed in
+                self.slideOutBarCollapsed = false
+            })
+        } else {
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                self.slideOutView.frame.origin.x = -self.view.bounds.width/2
+                self.slideOutBlackView.isHidden = true
+                self.slideOutBlackView.alpha = 0
+            }, completion: { completed in
+                self.slideOutBarCollapsed = true
+            })
+        }
+    }
+    
+    @objc func handleSwipe(sender: UISwipeGestureRecognizer) {
+        toggleMenu()
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        let navigationController = segue.destination
+        navigationController.modalPresentationStyle = .fullScreen
     }
     
 }

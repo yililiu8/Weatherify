@@ -8,10 +8,7 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
     var window: UIWindow?
-
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
         print("Scene launched")
@@ -26,7 +23,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 self.window!.makeKeyAndVisible()
             } else {
                 // direct to login
-                self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "LoginVC")
+                let LoginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC")
+                let navigationController = UINavigationController.init(rootViewController: LoginVC)
+                self.window?.rootViewController = navigationController
                 self.window!.makeKeyAndVisible()
             }
         }

@@ -95,6 +95,8 @@
 		947EC0F8260A892300CAED56 /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC0F7260A892300CAED56 /* PlaylistViewController.swift */; };
 		947EC0FD260A947900CAED56 /* CustomPlaylistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC0FC260A947900CAED56 /* CustomPlaylistTableViewCell.swift */; };
 		947EC102260A9AC000CAED56 /* LibraryPlaylistResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC101260A9AC000CAED56 /* LibraryPlaylistResponse.swift */; };
+		947EC107260ACF0B00CAED56 /* AllPlaylistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC106260ACF0A00CAED56 /* AllPlaylistsViewController.swift */; };
+		947EC10C260AD50000CAED56 /* AllPlaylistsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC10B260AD50000CAED56 /* AllPlaylistsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +171,8 @@
 		947EC0F7260A892300CAED56 /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		947EC0FC260A947900CAED56 /* CustomPlaylistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPlaylistTableViewCell.swift; sourceTree = "<group>"; };
 		947EC101260A9AC000CAED56 /* LibraryPlaylistResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPlaylistResponse.swift; sourceTree = "<group>"; };
+		947EC106260ACF0A00CAED56 /* AllPlaylistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPlaylistsViewController.swift; sourceTree = "<group>"; };
+		947EC10B260AD50000CAED56 /* AllPlaylistsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPlaylistsTableViewCell.swift; sourceTree = "<group>"; };
 		D590E035ADEFBA4483698F1D /* Pods-Weatherify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weatherify.release.xcconfig"; path = "Target Support Files/Pods-Weatherify/Pods-Weatherify.release.xcconfig"; sourceTree = "<group>"; };
 		F3024039D7310EF423373FD0 /* Pods-WeatherifyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherifyTests.release.xcconfig"; path = "Target Support Files/Pods-WeatherifyTests/Pods-WeatherifyTests.release.xcconfig"; sourceTree = "<group>"; };
 		FEFC5A8449DF33AAC0D2A51A /* Pods-Weatherify-WeatherifyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weatherify-WeatherifyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Weatherify-WeatherifyUITests/Pods-Weatherify-WeatherifyUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -286,6 +290,7 @@
 				947EC0B026097A4D00CAED56 /* SongCollectionViewCell.swift */,
 				947EC0F2260A7D5A00CAED56 /* PlaylistTableViewCell.swift */,
 				947EC0FC260A947900CAED56 /* CustomPlaylistTableViewCell.swift */,
+				947EC10B260AD50000CAED56 /* AllPlaylistsTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -313,6 +318,7 @@
 				947EC0782609086900CAED56 /* AuthViewController.swift */,
 				947EC0A226094D9E00CAED56 /* SettingsViewController.swift */,
 				947EC0F7260A892300CAED56 /* PlaylistViewController.swift */,
+				947EC106260ACF0A00CAED56 /* AllPlaylistsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -645,6 +651,7 @@
 				947EC026260900A200CAED56 /* AuthManager.swift in Sources */,
 				947EC03A2609011900CAED56 /* UserProfile.swift in Sources */,
 				947EC095260935E400CAED56 /* Weather.swift in Sources */,
+				947EC107260ACF0B00CAED56 /* AllPlaylistsViewController.swift in Sources */,
 				947EC0DC260A4F9900CAED56 /* Artist.swift in Sources */,
 				947EC0F8260A892300CAED56 /* PlaylistViewController.swift in Sources */,
 				947EC08E2609302D00CAED56 /* SpotifyService.swift in Sources */,
@@ -663,6 +670,7 @@
 				947EC0352609010700CAED56 /* AudioTrack.swift in Sources */,
 				947EC0872609301C00CAED56 /* WeatherService.swift in Sources */,
 				947EC0C82609928A00CAED56 /* Constants.swift in Sources */,
+				947EC10C260AD50000CAED56 /* AllPlaylistsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -860,6 +868,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9Z5ZS6QY3G;
 				INFOPLIST_FILE = Weatherify/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -880,6 +889,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9Z5ZS6QY3G;
 				INFOPLIST_FILE = Weatherify/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

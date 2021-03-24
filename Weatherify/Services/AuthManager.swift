@@ -72,9 +72,11 @@ final class AuthManager {
         if shouldRefreshToken {
             refreshAccessToken { [weak self] (success) in
                 if success {
-                    if let token = self?.accessToken{
+                    if let token = self?.accessToken {
                         completion(token)
                     }
+                } else {
+                    print("no success in refreshing access token")
                 }
             }
         } else if let token = accessToken{
@@ -85,6 +87,7 @@ final class AuthManager {
     
     public func refreshAccessToken(completion: @escaping ((Bool) -> Void)) {
         guard !refreshingToken else {
+            print("no need to refresh token")
             return
         }
         guard shouldRefreshToken else {
@@ -92,10 +95,12 @@ final class AuthManager {
             return
         }
         guard let refreshToken = self.refreshToken else {
+            print("no refresh token")
             return
         }
         //MARK: refresh token
         guard let url = URL(string: AuthManager.tokenAPIURL) else {
+            print("invalid url for refresh token")
             return
         }
         refreshingToken = true
@@ -118,6 +123,7 @@ final class AuthManager {
         
         let task = URLSession.shared.dataTask(with: request) { [weak self] data, _, error in
             guard let data = data, error == nil else {
+                print("unable to refresh access token / get data")
                 completion(false)
                 return
             }
@@ -177,5 +183,12 @@ final class AuthManager {
             
         }
         task.resume()
+    }
+    
+    public func signOut(completion: (Bool) -> Void) {
+        UserDefaults.standard.setValue(nil, forKey: "access_token")
+        UserDefaults.standard.setValue(nil, forKey: "refresh_token")
+        UserDefaults.standard.setValue(nil, forKey: "expirationDate")
+        completion(true)
     }
 }

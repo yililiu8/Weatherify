@@ -24,6 +24,7 @@ final class SpotifyService {
     private func createRequest(with url: URL?, type: HTTPMethod, completion: @escaping (URLRequest) -> Void) {
         AuthManager.shared.withValidToken { (token) in
             guard let apiURL = url else {
+                print("no api url")
                 return
             }
             var request = URLRequest(url: apiURL)
@@ -144,9 +145,9 @@ final class SpotifyService {
         guard let uid = Constants.user?.id else {
             return
         }
-        createRequest(with: URL(string: SpotifyService.baseAPIURL + "/users/\(uid)/playlists?public=false"), type: .POST) { (baseRequest) in
+        createRequest(with: URL(string: SpotifyService.baseAPIURL + "/users/\(uid)/playlists"), type: .POST) { (baseRequest) in
             var request = baseRequest
-            let json =  ["name": name]
+            let json =  ["name": name, "public": false] as [String : Any]
             request.httpBody = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed)
             let task = URLSession.shared.dataTask(with: request) { (data, _, error) in
                 guard let data = data, error == nil else {

@@ -10,4 +10,5 @@ import Foundation
 //MARK: global variables
 class Constants {
     static var user: UserProfile?
+    static var playlists: [Playlist]?
 }

@@ -20,28 +20,28 @@ class SettingsViewController: UIViewController {
         usernameLabel.text = Constants.user?.display_name
         emailLabel.text = Constants.user?.email
         countryLabel.text = Constants.user?.country
+        self.modalPresentationStyle = .fullScreen
     }
     
     @IBAction func backBtn(_ sender: Any) {
         navigationController?.popViewController(animated: true)
-//        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func logoutBtn(_ sender: Any) {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
-        vc.modalPresentationStyle = .fullScreen
-        vc.modalTransitionStyle = .coverVertical
-        self.present(vc, animated:true)
+        AuthManager.shared.signOut { [weak self](signedOut) in
+            if signedOut {
+                DispatchQueue.main.async {
+                    let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
+                    vc.modalPresentationStyle = .fullScreen
+                    vc.modalTransitionStyle = .coverVertical
+                    self?.present(vc, animated:true, completion: { 
+                        self?.navigationController?.popToRootViewController(animated: false)
+                    })
+                }
+            }
+        }
+        
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

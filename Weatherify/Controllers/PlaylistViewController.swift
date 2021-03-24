@@ -33,6 +33,7 @@ class PlaylistViewController: UIViewController {
             DispatchQueue.main.async {
                 if let list = list, error == nil {
                     print(list)
+                    Constants.playlists?.append(list)
                     self?.playlist_obj = list
                     self?.mainPlaylistCover.sd_setImage(with: URL(string: list.images[0].url), completed: nil)
                 } else {
@@ -45,8 +46,11 @@ class PlaylistViewController: UIViewController {
             ms += track.duration_ms
         }
         let totalTime = TimeInterval(Double(ms)/1000.0)
-        
-        playlistDetails.text = "\(totalTime.hour)h \(totalTime.minute)m - \( Constants.user!.display_name)"
+        if totalTime.hour == 0 {
+            playlistDetails.text = "\(totalTime.minute)m \(totalTime.second)s - \( Constants.user!.display_name)"
+        } else {
+            playlistDetails.text = "\(totalTime.hour)h \(totalTime.minute)m - \( Constants.user!.display_name)"
+        }
     }
     
     func openInSpotify(urlString: String) {
@@ -69,7 +73,24 @@ class PlaylistViewController: UIViewController {
     }
     
     @IBAction func shareBtn(_ sender: Any) {
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
         
+        guard let url = playlist_obj!.external_urls["spotify"] else {
+            return
+        }
+        let textToShare = url
+        if let myWebsite = URL(string: url) {
+            let objectsToShare = [textToShare, myWebsite, image ?? #imageLiteral(resourceName: "app-logo")] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            
+            //Excluded Activities
+            activityVC.excludedActivityTypes = [UIActivity.ActivityType.addToReadingList]
+            activityVC.popoverPresentationController?.sourceView = (sender as! UIView)
+            self.present(activityVC, animated: true, completion: nil)
+        }
     }
     
     @IBAction func backBtn(_ sender: Any) {
