@@ -13,9 +13,9 @@ struct SearchResultResponse: Codable {
 }
 
 struct SearchTracksResponse: Codable {
-    let items: [AudioTrack]
+    let items: [AudioTrack]?
 }
 
 struct SearchPlaylistsResponse: Codable {
-    let items: [Playlist]
+    let items: [Playlist]?
 }

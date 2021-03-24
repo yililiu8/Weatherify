@@ -16,6 +16,7 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .dark
         logoutBtn.imageView?.contentMode = .scaleAspectFit
         usernameLabel.text = Constants.user?.display_name
         emailLabel.text = Constants.user?.email

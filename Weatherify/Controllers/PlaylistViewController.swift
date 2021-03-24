@@ -24,6 +24,7 @@ class PlaylistViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .dark
         playlistTableView.dataSource = self
         playlistTableView.delegate = self
         playlistTitle.text = String(playlist_name!.dropLast(9))
@@ -126,7 +127,9 @@ extension PlaylistViewController: UITableViewDataSource, UITableViewDelegate {
         }
         cell.artist.text = String(artistText.dropLast(2))
         
-        let images = track.album.images
+        guard let images = track.album.images else {
+            return cell
+        }
         if images.isEmpty{
             return cell
         }

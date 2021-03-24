@@ -23,6 +23,7 @@ class AuthViewController: UIViewController, WKNavigationDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .dark
         webView.navigationDelegate = self
         self.view.addSubview(webView)
         webView.frame = view.frame

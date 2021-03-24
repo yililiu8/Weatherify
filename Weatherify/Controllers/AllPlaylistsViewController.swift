@@ -14,6 +14,8 @@ class AllPlaylistsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .dark
+//        UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .dark
         playlistTableView.dataSource = self
         playlistTableView.delegate = self
         getMyPlaylists()

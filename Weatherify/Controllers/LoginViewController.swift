@@ -12,6 +12,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .dark
         loginBtn.imageView?.contentMode = .scaleAspectFit
         navigationController?.setNavigationBarHidden(true, animated: false)
     }

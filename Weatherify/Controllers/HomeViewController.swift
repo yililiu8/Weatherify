@@ -11,6 +11,8 @@ import SDWebImage
 
 class HomeViewController: UIViewController, CLLocationManagerDelegate {
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     let locationManager = CLLocationManager()
     var userCoordinates: CLLocation?
     
@@ -25,6 +27,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     var shouldUpdateSpotifyTracks = false
     var previousWeather: String?
     
+    var spotifyAPISuccess = false
+    var currentlyRefreshing = false
+    
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var weatherImage: UIImageView!
@@ -36,6 +41,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var songRecommendationsTitle: UILabel!
     @IBOutlet weak var songsCollectionView2: UICollectionView!
     @IBOutlet weak var playlistTableView: UITableView!
+    @IBOutlet var loadScreen: UIView!
+    @IBOutlet weak var loadScreenSun: UIImageView!
     
     @IBOutlet var slideOutView: UIView!
     @IBOutlet var slideOutBlackView: UIView!
@@ -46,6 +53,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        overrideUserInterfaceStyle = .dark
+        scrollView.delegate = self
+        UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .dark
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
         let redViewController = mainStoryBoard .instantiateViewController(withIdentifier: "HomeVC")
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -59,6 +69,18 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         songRecommendationsTitle.text = " "
         setupLocation()
         
+        playlistTableView.frame.size.height = 300
+        
+        Timer.scheduledTimer(withTimeInterval: 6, repeats: true) { timer in
+            if self.spotifyAPISuccess {
+                timer.invalidate()
+            } else {
+                self.getRecommendedSongsByGenre()
+            }
+        }
+        
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: 1050)
+        
         self.view.addSubview(slideOutBlackView)
         slideOutBlackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tappedBlackView(_:))))
         slideOutBlackView.alpha = 0
@@ -71,6 +93,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         gesture.direction = .left
         self.view.addGestureRecognizer(gesture)
         
+        setUpLoadScreen()
         getUserProfile()
         
         songsCollectionView.delegate = self
@@ -86,6 +109,17 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         playlistTableView.delegate = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateView), name: UIApplication.didBecomeActiveNotification, object: nil)
+        
+        scrollView.refreshControl = UIRefreshControl()
+        
+        scrollView.refreshControl!.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        scrollView.addSubview(scrollView.refreshControl!)
+    }
+    
+    @objc func refresh(_ sender: AnyObject) {
+        currentlyRefreshing = true
+        updateView()
+        scrollView.refreshControl!.endRefreshing()
     }
     
     func getUserProfile() {
@@ -99,10 +133,55 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
                     guard let image = userProfile.images, !image.isEmpty else {
                         return
                     }
-                    self?.profileImage.sd_setImage(with: URL(string: image[0].url), completed: nil)
+                    self?.profileImage.sd_setImage(with: URL(string: image[0].url ?? "https://media-exp1.licdn.com/dms/image/C560BAQFkDzx_7dqq3A/company-logo_200_200/0/1519902995023?e=2159024400&v=beta&t=i5ZK3TSEVda9sbJ8o23SYYI11X7cUKPL6zW_TJhwLFw"), completed: nil)
                 } else {
                     print(error ?? "")
                 }
+            }
+        }
+    }
+    
+    
+    func setUpLoadScreen() {
+        if currentlyRefreshing {
+            return
+        }
+        loadScreen.frame = CGRect(x: 0, y:0, width: self.view.bounds.width, height: self.view.bounds.height)
+        loadScreen.isHidden = false
+        self.view.addSubview(loadScreen)
+        UIView.animate(withDuration: 4.0, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+            self.loadScreenSun.transform = self.loadScreenSun.transform.rotated(by: .pi * -1.3)
+        }, completion: { completed in
+            
+        })
+        var count = 0
+        Timer.scheduledTimer(withTimeInterval: 4, repeats: true) { timer in
+            if self.loadScreen.isHidden {
+                timer.invalidate()
+            }
+            else if count == 1 {
+                let alert = UIAlertController(title: "Error", message: "An unexpected error occured while signing you in, please try again.", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                AuthManager.shared.signOut { [weak self](signedOut) in
+                    if signedOut {
+                        DispatchQueue.main.async {
+                            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
+                            vc.modalPresentationStyle = .fullScreen
+                            vc.modalTransitionStyle = .coverVertical
+                            self?.present(vc, animated:true, completion: {
+                                self?.navigationController?.popToRootViewController(animated: false)
+                            })
+                        }
+                    }
+                }
+            } else {
+                count += 1
+                UIView.animate(withDuration: 4.0, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                    self.loadScreenSun.transform = self.loadScreenSun.transform.rotated(by: .pi * -1.3)
+                }, completion: { completed in
+                    
+                })
             }
         }
     }
@@ -124,6 +203,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     @objc func updateView() {
         print("update weather")
         refreshingWeatherData = true
+        setUpLoadScreen()
         requestWeatherForLocation()
     }
     
@@ -164,13 +244,14 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         SpotifyService.shared.getRecommendations(genres: genres) { [weak self] (tracks, error) in
             DispatchQueue.main.async {
                 if let tracks = tracks, error == nil {
-                    self?.recommendedTracks = tracks.tracks
+                    self?.recommendedTracks = tracks.tracks ?? [AudioTrack]()
                     print(self?.recommendedTracks ?? "")
                     print(self?.recommendedTracks.count ?? -1)
                     self?.songsCollectionView.reloadData()
                     self?.songsCollectionView2.reloadData()
                 } else {
                     print(error ?? "")
+                    self?.spotifyAPISuccess = false
                 }
             }
         }
@@ -185,9 +266,12 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
                         if self?.recommendedPlaylists.count == 6 {
                             self?.recommendedPlaylists.shuffle()
                             self?.playlistTableView.reloadData()
+                            self?.loadScreen.isHidden = true
+                            self?.spotifyAPISuccess = true
                         }
                     } else {
                         print(error ?? "")
+                        self?.spotifyAPISuccess = false
                     }
                 }
             }
@@ -291,10 +375,11 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         updateLocationLabel()
         updateWeatherImage()
         self.removeSpinner()
-        if !refreshingWeatherData || shouldUpdateSpotifyTracks {
+        if !refreshingWeatherData || shouldUpdateSpotifyTracks || currentlyRefreshing {
             getRecommendedSongsByGenre()
         } else {
             print("dont need to update spotify data")
+            loadScreen.isHidden = true
         }
     }
     
@@ -348,10 +433,11 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         getWeather()
     }
     
-    func generatePlaylist(genres: Set<String>, weather: String) {
+    func generatePlaylist(genres: Set<String>, weather: String) -> Bool {
         let df = DateFormatter()
         df.dateFormat = "MM-dd-yy hh:mm:ss"
         let day = df.string(from: Date())
+        var success = true
         
         let name = weather + " " + day
         SpotifyService.shared.createPlaylist(with: name) { [weak self] (id, error) in
@@ -359,8 +445,12 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
                 if let id = id, error == nil {
                     SpotifyService.shared.getRecommendations(genres: genres) { [weak self] (tracks, error) in
                         if let tracks = tracks, error == nil {
-                            self?.customPlaylistTracks = tracks.tracks
-                            SpotifyService.shared.addTrackToPlaylist(tracks: tracks.tracks, playlistID: id) { (result) in
+                            self?.customPlaylistTracks = tracks.tracks ?? [AudioTrack]()
+                            guard let m_tracks = tracks.tracks else {
+                                success = false
+                                return
+                            }
+                            SpotifyService.shared.addTrackToPlaylist(tracks: m_tracks, playlistID: id) { (result) in
                                 if result {
                                     print("successfully added item to playlist")
                                     DispatchQueue.main.async {
@@ -368,33 +458,33 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
                                         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "playlistView") as! PlaylistViewController
                                         nextViewController.modalPresentationStyle = .fullScreen
                                         nextViewController.modalTransitionStyle = .coverVertical
-                                        nextViewController.playlist = tracks.tracks
+                                        nextViewController.playlist = m_tracks
                                         nextViewController.playlist_name = name
                                         nextViewController.playlist_id = id
                                         
+                                        success = true
                                         self?.present(nextViewController, animated:true)
                                     }
                                 } else {
                                     print("failed to add item to playlist")
+                                    success = false
+                                    return
                                 }
                             }
                         } else {
                             print(error ?? "")
+                            success = false
+                            return
                         }
                     }
                 } else {
                     print(error ?? "")
+                    success = false
+                    return
                 }
             }
         }
-//        SpotifyService.shared.getRecommendations(genres: genres) { [weak self] (tracks, error) in
-//            if let tracks = tracks, error == nil {
-//                self?.customPlaylistTracks = tracks.tracks
-//
-//            } else {
-//                print(error ?? "")
-//            }
-//        }
+        return success
     }
     
     @IBAction func generatePlaylist(_ sender: Any) {
@@ -402,27 +492,33 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
             return
         }
         let description = weatherResult!.current.weather[0].description
+        var res = true
         switch description {
         case "clear sky":
-            generatePlaylist(genres: ["pop", "hip-hop", "summer", "happy"], weather: "Sunny")
+            res = generatePlaylist(genres: ["pop", "hip-hop", "summer", "happy"], weather: "Sunny")
         case "few clouds":
-            generatePlaylist(genres: ["pop", "hip-hop", "soul", "party"], weather: "Partly Cloudy")
+            res = generatePlaylist(genres: ["pop", "hip-hop", "soul", "party"], weather: "Partly Cloudy")
         case "mist":
-            generatePlaylist(genres: ["jazz", "chill", "blues"], weather: "Cloudy")
+            res = generatePlaylist(genres: ["jazz", "chill", "blues"], weather: "Cloudy")
         case "scattered clouds":
             fallthrough
         case "broken clouds":
-            generatePlaylist(genres: ["chill", "pop", "indie", "indie-pop"], weather: "Cloudy")
+            res = generatePlaylist(genres: ["chill", "pop", "indie", "indie-pop"], weather: "Cloudy")
         case "shower rain":
-            generatePlaylist(genres: ["rainy-day", "chill", "acoustic", "soul"], weather: "Rainy")
+            res = generatePlaylist(genres: ["rainy-day", "chill", "acoustic", "soul"], weather: "Rainy")
         case "rain":
-            generatePlaylist(genres: ["rainy-day", "chill", "acoustic"], weather: "Rainy")
+            res = generatePlaylist(genres: ["rainy-day", "chill", "acoustic"], weather: "Rainy")
         case "thunderstorm":
-            generatePlaylist(genres: ["rock", "sleep", "metal"], weather: "Thundering")
+            res = generatePlaylist(genres: ["rock", "sleep", "metal"], weather: "Thundering")
         case "snow":
-            generatePlaylist(genres: ["chill", "classical", "metal", "jazz"], weather: "Snowy")
+            res = generatePlaylist(genres: ["chill", "classical", "metal", "jazz"], weather: "Snowy")
         default:
-            generatePlaylist(genres: ["chill", "pop", "party", "jazz", "classical", "indie"], weather: "WEATHER")
+            res = generatePlaylist(genres: ["chill", "pop", "party", "jazz", "classical", "indie"], weather: "WEATHER")
+        }
+        if !res {
+            let alert = UIAlertController(title: "Error", message: "An unexpected error occured while creating your playlist. Try again.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
@@ -488,7 +584,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     
 }
 
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 129)
     }
@@ -515,7 +611,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
         cell.artist.text = String(artistText.dropLast(2))
         
-        let images = track.album.images
+        guard let images = track.album.images else {
+            return cell
+        }
         if images.isEmpty{
             return cell
         }
@@ -581,6 +679,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.isEqual(self.scrollView) {
+            if scrollView.contentOffset.x != 0 {
+                scrollView.contentOffset.x = 0
+            }
+        }
         if scrollView.isEqual(songsCollectionView), scrollView.isDragging {
             self.synchronizeScrollView(songsCollectionView2, toScrollView: songsCollectionView)
         }
