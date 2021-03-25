@@ -10,16 +10,13 @@ import UIKit
 class AllPlaylistsViewController: UIViewController {
 
     @IBOutlet weak var playlistTableView: UITableView!
-//    var myPlaylists = [Playlist]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .dark
-//        UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .dark
         playlistTableView.dataSource = self
         playlistTableView.delegate = self
         getMyPlaylists()
-        // Do any additional setup after loading the view.
     }
     
     func getMyPlaylists() {

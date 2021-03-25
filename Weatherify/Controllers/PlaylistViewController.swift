@@ -54,6 +54,7 @@ class PlaylistViewController: UIViewController {
         }
     }
     
+    //MARK: spotify redirection functions
     func openInSpotify(urlString: String) {
         let url = URL(string: urlString)
         if UIApplication.shared.canOpenURL(url!)
@@ -73,6 +74,7 @@ class PlaylistViewController: UIViewController {
         openInSpotify(urlString: url)
     }
     
+    //MARK: Buttons
     @IBAction func shareBtn(_ sender: Any) {
         UIGraphicsBeginImageContext(view.frame.size)
         view.layer.render(in: UIGraphicsGetCurrentContext()!)
@@ -133,7 +135,6 @@ extension PlaylistViewController: UITableViewDataSource, UITableViewDelegate {
         if images.isEmpty{
             return cell
         }
-//        let urlString = images[0].url
         guard let url = URL(string: images[0].url) else {
             return cell
         }

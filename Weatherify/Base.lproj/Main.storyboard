@@ -44,6 +44,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sky" translatesAutoresizingMaskIntoConstraints="NO" id="kFJ-vi-47C">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="588"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="588" id="A3p-Ne-crn"/>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04V-3u-Jgo">
                                 <rect key="frame" x="51" y="124" width="185" height="42"/>
                                 <constraints>
@@ -51,11 +57,11 @@
                                     <constraint firstAttribute="height" constant="42" id="oqv-Cz-jiT"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="35"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" red="0.11372549019607843" green="0.72549019607843135" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lzs-eP-AEe">
-                                <rect key="frame" x="45" y="315" width="325" height="45"/>
+                                <rect key="frame" x="45" y="767" width="325" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="Kri-oK-twc"/>
                                 </constraints>
@@ -64,25 +70,37 @@
                                     <action selector="loginBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wZx-4u-gcr"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="JuK-ar-qLb">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-green" translatesAutoresizingMaskIntoConstraints="NO" id="JuK-ar-qLb">
                                 <rect key="frame" x="43" y="165" width="236" height="58"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="236" id="6Tx-Hu-hIj"/>
                                     <constraint firstAttribute="height" constant="58" id="89W-1x-QtB"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e2D-dd-eGa">
-                                <rect key="frame" x="51" y="231" width="314" height="35.5"/>
-                                <string key="text">Discover new songs and get recommendations
-for your music based on the weather outside</string>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discover new songs, get recommendations for your music, and generate custom playlists based on the weather outside" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e2D-dd-eGa">
+                                <rect key="frame" x="51" y="684" width="314" height="53"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Music Bars" translatesAutoresizingMaskIntoConstraints="NO" id="LTM-KK-EXa">
-                                <rect key="frame" x="49" y="546" width="317" height="316"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sun" translatesAutoresizingMaskIntoConstraints="NO" id="w8w-WV-uI6">
+                                <rect key="frame" x="117" y="258" width="180" height="180"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="316" id="5Sq-IQ-xiC"/>
+                                    <constraint firstAttribute="height" constant="180" id="tpj-2d-bt1"/>
+                                    <constraint firstAttribute="width" constant="180" id="uzu-1z-eGv"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spotify-logo" translatesAutoresizingMaskIntoConstraints="NO" id="A4w-3a-epj">
+                                <rect key="frame" x="137" y="284" width="140" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="1vv-MV-HgE"/>
+                                    <constraint firstAttribute="width" constant="140" id="Ozt-tf-kmQ"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mountains" translatesAutoresizingMaskIntoConstraints="NO" id="c8B-0M-Pfd">
+                                <rect key="frame" x="0.0" y="420" width="414" height="186"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="186" id="ZH7-Bm-fPR"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -90,28 +108,36 @@ for your music based on the weather outside</string>
                         <color key="backgroundColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.10588235294117647" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="04V-3u-Jgo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="51" id="06X-SC-sfe"/>
-                            <constraint firstItem="Lzs-eP-AEe" firstAttribute="top" secondItem="e2D-dd-eGa" secondAttribute="bottom" constant="48.5" id="ETn-ii-Vfh"/>
-                            <constraint firstItem="LTM-KK-EXa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="49" id="NAq-4S-HBm"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LTM-KK-EXa" secondAttribute="trailing" constant="48" id="OeG-VA-8EI"/>
-                            <constraint firstItem="LTM-KK-EXa" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="SEn-qU-afo"/>
+                            <constraint firstAttribute="trailing" secondItem="c8B-0M-Pfd" secondAttribute="trailing" id="1sB-Ia-Tx0"/>
+                            <constraint firstItem="Lzs-eP-AEe" firstAttribute="top" secondItem="e2D-dd-eGa" secondAttribute="bottom" constant="30" id="ETn-ii-Vfh"/>
+                            <constraint firstItem="c8B-0M-Pfd" firstAttribute="top" secondItem="A4w-3a-epj" secondAttribute="bottom" constant="8" symbolic="YES" id="Hgb-Vh-J2k"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Lzs-eP-AEe" secondAttribute="bottom" constant="50" id="L1b-en-5U6"/>
+                            <constraint firstItem="kFJ-vi-47C" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Ogn-9h-iO9"/>
+                            <constraint firstItem="w8w-WV-uI6" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-100" id="P5a-bf-6uq"/>
+                            <constraint firstItem="kFJ-vi-47C" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="PgG-Z9-oJr"/>
                             <constraint firstItem="e2D-dd-eGa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="51" id="UCx-Tb-bfN"/>
+                            <constraint firstItem="A4w-3a-epj" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-100" id="UTZ-1b-gdu"/>
                             <constraint firstItem="JuK-ar-qLb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="43" id="WfM-WV-lk8"/>
                             <constraint firstItem="JuK-ar-qLb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="121" id="ZgG-hl-2tH"/>
+                            <constraint firstItem="A4w-3a-epj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="a9P-dY-Ezz"/>
+                            <constraint firstItem="w8w-WV-uI6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cVH-ZH-v1P"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="e2D-dd-eGa" secondAttribute="trailing" constant="49" id="eoP-nr-1Di"/>
+                            <constraint firstItem="kFJ-vi-47C" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gzd-So-VuF"/>
+                            <constraint firstItem="c8B-0M-Pfd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kGY-IU-1LR"/>
                             <constraint firstItem="04V-3u-Jgo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="l1U-Vk-uzO"/>
-                            <constraint firstItem="e2D-dd-eGa" firstAttribute="top" secondItem="JuK-ar-qLb" secondAttribute="bottom" constant="8" symbolic="YES" id="qoK-up-GLu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Lzs-eP-AEe" secondAttribute="trailing" constant="44" id="yfg-PA-jqU"/>
                             <constraint firstItem="Lzs-eP-AEe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="45" id="zOf-1J-QfM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="P4g-8g-CzC"/>
                     <connections>
+                        <outlet property="loadSunScreen" destination="w8w-WV-uI6" id="NLz-TV-DzS"/>
                         <outlet property="loginBtn" destination="Lzs-eP-AEe" id="kmW-7N-Smp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="26" y="-372"/>
+            <point key="canvasLocation" x="24.637681159420293" y="-372.32142857142856"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="nGJ-9c-idC">
@@ -222,10 +248,9 @@ for your music based on the weather outside</string>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BNr-hw-JPR">
                                                 <rect key="frame" x="44" y="421" width="327" height="128"/>
-                                                <color key="backgroundColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="128" id="DPj-d3-COg"/>
-                                                    <constraint firstAttribute="width" constant="325" id="z7O-bJ-b1r"/>
                                                 </constraints>
                                                 <viewLayoutGuide key="contentLayoutGuide" id="b4M-Wi-t3G"/>
                                                 <viewLayoutGuide key="frameLayoutGuide" id="2a0-Mf-TDe"/>
@@ -297,7 +322,7 @@ for your music based on the weather outside</string>
                                                                     </connections>
                                                                 </button>
                                                             </subviews>
-                                                            <color key="backgroundColor" red="0.1333333333" green="0.1333333333" blue="0.1529411765" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.15294117647058825" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstItem="Tui-Fh-G93" firstAttribute="leading" secondItem="epL-k8-9DK" secondAttribute="leading" constant="22" id="0jb-Kg-u3s"/>
                                                                 <constraint firstAttribute="trailing" secondItem="h55-8H-vCK" secondAttribute="trailing" constant="8" id="2aV-CQ-Zjj"/>
@@ -316,7 +341,7 @@ for your music based on the weather outside</string>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </collectionViewCellContentView>
-                                                        <color key="backgroundColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                         <size key="customSize" width="325" height="129"/>
                                                         <connections>
                                                             <outlet property="albumCover" destination="Tui-Fh-G93" id="pSE-3e-8Xt"/>
@@ -329,10 +354,9 @@ for your music based on the weather outside</string>
                                             </collectionView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tH2-RD-gNc">
                                                 <rect key="frame" x="44" y="565" width="327" height="128"/>
-                                                <color key="backgroundColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="128" id="NYh-Iu-zvQ"/>
-                                                    <constraint firstAttribute="width" constant="325" id="Nvd-QT-afd"/>
                                                 </constraints>
                                                 <viewLayoutGuide key="contentLayoutGuide" id="WPc-Qj-KeL"/>
                                                 <viewLayoutGuide key="frameLayoutGuide" id="NGa-om-50d"/>
@@ -404,7 +428,7 @@ for your music based on the weather outside</string>
                                                                     </connections>
                                                                 </button>
                                                             </subviews>
-                                                            <color key="backgroundColor" red="0.1333333333" green="0.1333333333" blue="0.1529411765" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.15294117647058825" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="trailing" secondItem="3zL-wa-kwg" secondAttribute="trailing" constant="8" id="BIn-cs-U0P"/>
                                                                 <constraint firstItem="Pj9-ac-HrU" firstAttribute="top" secondItem="zLi-4N-xCa" secondAttribute="top" constant="10" id="ELg-Zv-OnW"/>
@@ -423,7 +447,7 @@ for your music based on the weather outside</string>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </collectionViewCellContentView>
-                                                        <color key="backgroundColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                         <size key="customSize" width="325" height="129"/>
                                                         <connections>
                                                             <outlet property="albumCover" destination="Pj9-ac-HrU" id="CsC-R7-oCg"/>
@@ -444,76 +468,6 @@ for your music based on the weather outside</string>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vro-iV-3GJ">
-                                                <rect key="frame" x="44" y="737" width="330" height="400"/>
-                                                <color key="backgroundColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="400" id="7Ao-hE-9Jd"/>
-                                                </constraints>
-                                                <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="playlistCell" rowHeight="57" id="S8E-36-E9W" customClass="PlaylistTableViewCell" customModule="Weatherify" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="28" width="330" height="57"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
-                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="S8E-36-E9W" id="h6Y-My-XVG">
-                                                            <rect key="frame" x="0.0" y="0.0" width="330" height="57"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <subviews>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fgo-pD-Tl2">
-                                                                    <rect key="frame" x="0.0" y="5" width="330" height="47"/>
-                                                                    <subviews>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music.note.list" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="lwX-mL-AaA">
-                                                                            <rect key="frame" x="285" y="6.5" width="34" height="33"/>
-                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                            <color key="tintColor" red="0.1176470588" green="0.84313725490000002" blue="0.37647058820000001" alpha="0.8980392157" colorSpace="calibratedRGB"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="height" constant="34" id="ECM-5M-uUf"/>
-                                                                                <constraint firstAttribute="width" constant="34" id="rIx-Zw-hUj"/>
-                                                                            </constraints>
-                                                                            <userDefinedRuntimeAttributes>
-                                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                                    <integer key="value" value="8"/>
-                                                                                </userDefinedRuntimeAttribute>
-                                                                            </userDefinedRuntimeAttributes>
-                                                                        </imageView>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chill Vibes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xtU-11-Vhk">
-                                                                            <rect key="frame" x="18" y="15" width="252" height="16.5"/>
-                                                                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
-                                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                    </subviews>
-                                                                    <color key="backgroundColor" red="0.1333333333" green="0.1333333333" blue="0.1529411765" alpha="0.8980392157" colorSpace="calibratedRGB"/>
-                                                                    <constraints>
-                                                                        <constraint firstItem="lwX-mL-AaA" firstAttribute="top" secondItem="fgo-pD-Tl2" secondAttribute="top" constant="6" id="EwS-oM-eEW"/>
-                                                                        <constraint firstItem="xtU-11-Vhk" firstAttribute="leading" secondItem="fgo-pD-Tl2" secondAttribute="leading" constant="18" id="JhT-JC-d22"/>
-                                                                        <constraint firstItem="lwX-mL-AaA" firstAttribute="leading" secondItem="xtU-11-Vhk" secondAttribute="trailing" constant="15" id="QEZ-jQ-RSO"/>
-                                                                        <constraint firstItem="xtU-11-Vhk" firstAttribute="top" secondItem="fgo-pD-Tl2" secondAttribute="top" constant="15" id="WGB-cm-zbh"/>
-                                                                        <constraint firstAttribute="height" constant="47" id="Zhi-ci-Ww1"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="lwX-mL-AaA" secondAttribute="trailing" constant="11" id="hs7-H3-gdA"/>
-                                                                    </constraints>
-                                                                    <userDefinedRuntimeAttributes>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                            <integer key="value" value="10"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                    </userDefinedRuntimeAttributes>
-                                                                </view>
-                                                            </subviews>
-                                                            <color key="backgroundColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.1058823529" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
-                                                            <constraints>
-                                                                <constraint firstItem="fgo-pD-Tl2" firstAttribute="leading" secondItem="h6Y-My-XVG" secondAttribute="leading" id="GIg-sf-PQN"/>
-                                                                <constraint firstAttribute="bottom" secondItem="fgo-pD-Tl2" secondAttribute="bottom" constant="5" id="W1h-o2-EHc"/>
-                                                                <constraint firstItem="fgo-pD-Tl2" firstAttribute="top" secondItem="h6Y-My-XVG" secondAttribute="top" constant="5" id="ZUs-Nf-eo8"/>
-                                                                <constraint firstAttribute="trailing" secondItem="fgo-pD-Tl2" secondAttribute="trailing" id="gmH-CY-dig"/>
-                                                            </constraints>
-                                                        </tableViewCellContentView>
-                                                        <color key="backgroundColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <connections>
-                                                            <outlet property="cover" destination="lwX-mL-AaA" id="RQ6-C9-GXQ"/>
-                                                            <outlet property="name" destination="xtU-11-Vhk" id="hNA-K0-eJY"/>
-                                                        </connections>
-                                                    </tableViewCell>
-                                                </prototypes>
-                                            </tableView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJf-03-mWa">
                                                 <rect key="frame" x="36" y="56" width="30" height="25"/>
                                                 <constraints>
@@ -526,13 +480,91 @@ for your music based on the weather outside</string>
                                                     <action selector="menuBtnTapped:" destination="ln6-Tj-mDY" eventType="touchUpInside" id="rc8-no-Ep9"/>
                                                 </connections>
                                             </button>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xKY-N0-usa">
+                                                <rect key="frame" x="43" y="737" width="330" height="520"/>
+                                                <color key="backgroundColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="520" id="0CP-gg-c81"/>
+                                                </constraints>
+                                                <prototypes>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="playlistCell" rowHeight="76" id="C2b-hd-a8G" customClass="AllPlaylistsTableViewCell" customModule="Weatherify" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="28" width="330" height="76"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="C2b-hd-a8G" id="4Ps-v9-dfd">
+                                                            <rect key="frame" x="0.0" y="0.0" width="330" height="76"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c1w-bL-nUd">
+                                                                    <rect key="frame" x="0.0" y="5" width="330" height="70"/>
+                                                                    <subviews>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music.note.list" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UE7-eB-mwj">
+                                                                            <rect key="frame" x="267" y="6.5" width="52" height="51"/>
+                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <color key="tintColor" red="0.1176470588" green="0.84313725490000002" blue="0.37647058820000001" alpha="0.8980392157" colorSpace="calibratedRGB"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="52" id="NkT-Kr-cLb"/>
+                                                                                <constraint firstAttribute="height" constant="52" id="Tcr-iK-rBT"/>
+                                                                            </constraints>
+                                                                            <userDefinedRuntimeAttributes>
+                                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                                    <integer key="value" value="8"/>
+                                                                                </userDefinedRuntimeAttribute>
+                                                                            </userDefinedRuntimeAttributes>
+                                                                        </imageView>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chill Vibes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMZ-3v-uSW">
+                                                                            <rect key="frame" x="18" y="15" width="234" height="18"/>
+                                                                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
+                                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Owner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNZ-0w-TQY">
+                                                                            <rect key="frame" x="18" y="34" width="234" height="14.5"/>
+                                                                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
+                                                                            <color key="textColor" red="0.70196078429999997" green="0.70196078429999997" blue="0.70196078429999997" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                    <color key="backgroundColor" red="0.1333333333" green="0.1333333333" blue="0.1529411765" alpha="0.8980392157" colorSpace="calibratedRGB"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="70" id="5zE-s2-npZ"/>
+                                                                        <constraint firstItem="hNZ-0w-TQY" firstAttribute="top" secondItem="nMZ-3v-uSW" secondAttribute="bottom" constant="1" id="LIe-5B-Qc3"/>
+                                                                        <constraint firstItem="UE7-eB-mwj" firstAttribute="leading" secondItem="hNZ-0w-TQY" secondAttribute="trailing" constant="15" id="PTj-s8-VuO"/>
+                                                                        <constraint firstItem="nMZ-3v-uSW" firstAttribute="leading" secondItem="c1w-bL-nUd" secondAttribute="leading" constant="18" id="YD6-fu-g5v"/>
+                                                                        <constraint firstItem="UE7-eB-mwj" firstAttribute="leading" secondItem="nMZ-3v-uSW" secondAttribute="trailing" constant="15" id="Ygh-T8-mvM"/>
+                                                                        <constraint firstItem="nMZ-3v-uSW" firstAttribute="top" secondItem="c1w-bL-nUd" secondAttribute="top" constant="15" id="cOz-Df-XnU"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="UE7-eB-mwj" secondAttribute="trailing" constant="11" id="jQh-lA-cia"/>
+                                                                        <constraint firstItem="UE7-eB-mwj" firstAttribute="top" secondItem="c1w-bL-nUd" secondAttribute="top" constant="6" id="lfc-V5-NMc"/>
+                                                                        <constraint firstItem="hNZ-0w-TQY" firstAttribute="leading" secondItem="c1w-bL-nUd" secondAttribute="leading" constant="18" id="v7I-57-UJ3"/>
+                                                                    </constraints>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                            <integer key="value" value="10"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </view>
+                                                            </subviews>
+                                                            <color key="backgroundColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.1058823529" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstItem="c1w-bL-nUd" firstAttribute="top" secondItem="4Ps-v9-dfd" secondAttribute="top" constant="5" id="Qal-ha-Kff"/>
+                                                                <constraint firstItem="c1w-bL-nUd" firstAttribute="leading" secondItem="4Ps-v9-dfd" secondAttribute="leading" id="YIP-QU-e8U"/>
+                                                                <constraint firstAttribute="trailing" secondItem="c1w-bL-nUd" secondAttribute="trailing" id="oRY-nj-eNs"/>
+                                                            </constraints>
+                                                        </tableViewCellContentView>
+                                                        <color key="backgroundColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <outlet property="cover" destination="UE7-eB-mwj" id="m80-Xx-a1q"/>
+                                                            <outlet property="name" destination="nMZ-3v-uSW" id="gXs-j3-qnp"/>
+                                                            <outlet property="owner" destination="hNZ-0w-TQY" id="zs0-s6-Kf5"/>
+                                                        </connections>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                            </tableView>
                                         </subviews>
                                         <viewLayoutGuide key="safeArea" id="FEh-OF-Jh8"/>
                                         <color key="backgroundColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.1058823529" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="Pm8-b0-wUz" firstAttribute="leading" secondItem="FEh-OF-Jh8" secondAttribute="leading" constant="44" id="0Nj-y7-a5y"/>
                                             <constraint firstItem="Pm8-b0-wUz" firstAttribute="top" secondItem="MVE-Lj-MCy" secondAttribute="bottom" constant="39" id="4k1-iQ-7Ew"/>
-                                            <constraint firstItem="Vro-iV-3GJ" firstAttribute="leading" secondItem="FEh-OF-Jh8" secondAttribute="leading" constant="44" id="7F0-NB-Jck"/>
                                             <constraint firstItem="yGu-Fw-HM2" firstAttribute="top" secondItem="tH2-RD-gNc" secondAttribute="bottom" constant="15" id="8MM-PC-h7W"/>
                                             <constraint firstItem="tJf-03-mWa" firstAttribute="top" secondItem="FEh-OF-Jh8" secondAttribute="top" constant="7" id="BXz-Ai-cVb"/>
                                             <constraint firstItem="BNr-hw-JPR" firstAttribute="top" secondItem="E6F-xS-xlP" secondAttribute="bottom" constant="8" symbolic="YES" id="BtL-ru-HqB"/>
@@ -542,15 +574,16 @@ for your music based on the weather outside</string>
                                             <constraint firstItem="FEh-OF-Jh8" firstAttribute="trailing" secondItem="tH2-RD-gNc" secondAttribute="trailing" constant="45" id="GoP-9I-9gC"/>
                                             <constraint firstItem="FEh-OF-Jh8" firstAttribute="trailing" secondItem="Pm8-b0-wUz" secondAttribute="trailing" constant="45" id="Hab-ug-WhB"/>
                                             <constraint firstItem="9is-1V-BT5" firstAttribute="leading" secondItem="FEh-OF-Jh8" secondAttribute="leading" constant="46" id="OKz-Ya-a0U"/>
-                                            <constraint firstItem="FEh-OF-Jh8" firstAttribute="trailing" secondItem="Vro-iV-3GJ" secondAttribute="trailing" constant="42" id="PLh-gC-1SG"/>
                                             <constraint firstItem="tJf-03-mWa" firstAttribute="leading" secondItem="FEh-OF-Jh8" secondAttribute="leading" constant="36" id="QuB-8n-PnW"/>
                                             <constraint firstItem="MVE-Lj-MCy" firstAttribute="leading" secondItem="FEh-OF-Jh8" secondAttribute="leading" constant="44" id="TtS-gE-dYF"/>
-                                            <constraint firstItem="Vro-iV-3GJ" firstAttribute="top" secondItem="yGu-Fw-HM2" secondAttribute="bottom" constant="1" id="UpZ-Qp-Kyz"/>
                                             <constraint firstItem="tH2-RD-gNc" firstAttribute="top" secondItem="BNr-hw-JPR" secondAttribute="bottom" constant="16" id="Utt-cG-17s"/>
                                             <constraint firstItem="tH2-RD-gNc" firstAttribute="leading" secondItem="FEh-OF-Jh8" secondAttribute="leading" constant="44" id="YNc-AD-FK6"/>
                                             <constraint firstItem="E6F-xS-xlP" firstAttribute="top" secondItem="Pm8-b0-wUz" secondAttribute="bottom" constant="36" id="YgC-mW-Mrt"/>
+                                            <constraint firstItem="xKY-N0-usa" firstAttribute="leading" secondItem="FEh-OF-Jh8" secondAttribute="leading" constant="43" id="aFh-XI-bhQ"/>
                                             <constraint firstItem="yGu-Fw-HM2" firstAttribute="leading" secondItem="FEh-OF-Jh8" secondAttribute="leading" constant="44" id="iE3-iy-SRZ"/>
                                             <constraint firstItem="E6F-xS-xlP" firstAttribute="leading" secondItem="FEh-OF-Jh8" secondAttribute="leading" constant="44" id="kCg-Y2-q8z"/>
+                                            <constraint firstItem="xKY-N0-usa" firstAttribute="top" secondItem="yGu-Fw-HM2" secondAttribute="bottom" constant="1" id="lKG-CO-dJ3"/>
+                                            <constraint firstItem="FEh-OF-Jh8" firstAttribute="trailing" secondItem="xKY-N0-usa" secondAttribute="trailing" constant="43" id="oPD-Ii-mpL"/>
                                             <constraint firstItem="BNr-hw-JPR" firstAttribute="leading" secondItem="FEh-OF-Jh8" secondAttribute="leading" constant="44" id="s5F-UV-GGd"/>
                                             <constraint firstItem="MVE-Lj-MCy" firstAttribute="top" secondItem="9is-1V-BT5" secondAttribute="bottom" constant="18" id="x2A-nu-kJy"/>
                                         </constraints>
@@ -562,6 +595,7 @@ for your music based on the weather outside</string>
                         <color key="backgroundColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.10588235294117647" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
+                        <outlet property="customProgressBar" destination="LFf-az-rkQ" id="lRU-Ci-wwk"/>
                         <outlet property="emailLabel" destination="o9e-Ez-ks3" id="hXi-zs-6bB"/>
                         <outlet property="highAndLowTemp" destination="xG7-qj-KPK" id="Mjq-Vw-PS3"/>
                         <outlet property="loadScreen" destination="rQT-oK-rKd" id="ZEO-Ag-53O"/>
@@ -569,7 +603,9 @@ for your music based on the weather outside</string>
                         <outlet property="locationLabel" destination="pKq-Ny-CdH" id="BKl-eU-SgX"/>
                         <outlet property="nameLabel" destination="nus-1j-ILU" id="lPY-vq-2Y1"/>
                         <outlet property="playlistBtn" destination="Pm8-b0-wUz" id="C7v-l4-sUa"/>
-                        <outlet property="playlistTableView" destination="Vro-iV-3GJ" id="kyS-7M-euL"/>
+                        <outlet property="playlistLoadingView" destination="ST0-T5-mSY" id="5xO-FK-oBf"/>
+                        <outlet property="playlistProgressBar" destination="5Mg-MP-QSD" id="O36-IF-fyf"/>
+                        <outlet property="playlistTableView" destination="xKY-N0-usa" id="Tq5-8k-j4s"/>
                         <outlet property="profileImage" destination="ey0-2x-Xmv" id="AsL-dn-8Pq"/>
                         <outlet property="scrollView" destination="lcr-sd-dlR" id="zdv-oE-kZl"/>
                         <outlet property="slideOutBlackView" destination="IGk-4V-hBE" id="ARQ-DO-n16"/>
@@ -577,6 +613,7 @@ for your music based on the weather outside</string>
                         <outlet property="songRecommendationsTitle" destination="E6F-xS-xlP" id="Q4l-cF-of2"/>
                         <outlet property="songsCollectionView" destination="BNr-hw-JPR" id="TKv-z9-fZ1"/>
                         <outlet property="songsCollectionView2" destination="tH2-RD-gNc" id="R9A-NI-8GP"/>
+                        <outlet property="viewPlaylistBtn" destination="DGE-wS-ewZ" id="S73-jT-QSx"/>
                         <outlet property="weatherImage" destination="Nrb-Ec-bsd" id="Of1-iw-1wM"/>
                         <outlet property="weatherTemp" destination="4nu-Mr-qrL" id="jv7-hb-UEt"/>
                         <outlet property="weatherView" destination="MVE-Lj-MCy" id="N0x-O6-Ond"/>
@@ -634,7 +671,7 @@ for your music based on the weather outside</string>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AfM-Wa-DQP">
-                            <rect key="frame" x="30" y="320" width="120" height="35"/>
+                            <rect key="frame" x="30" y="320" width="190" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="LPi-7m-aNa"/>
                             </constraints>
@@ -655,7 +692,7 @@ for your music based on the weather outside</string>
                         <constraint firstItem="THG-ye-3AN" firstAttribute="leading" secondItem="aNy-Ga-32U" secondAttribute="leading" constant="30" id="B2l-MC-eSk"/>
                         <constraint firstItem="AfM-Wa-DQP" firstAttribute="top" secondItem="THG-ye-3AN" secondAttribute="bottom" constant="13" id="E64-M4-3Ov"/>
                         <constraint firstItem="AfM-Wa-DQP" firstAttribute="leading" secondItem="aNy-Ga-32U" secondAttribute="leading" constant="30" id="F2G-EJ-7xp"/>
-                        <constraint firstItem="aNy-Ga-32U" firstAttribute="trailing" secondItem="AfM-Wa-DQP" secondAttribute="trailing" constant="100" id="HMa-ea-D5B"/>
+                        <constraint firstItem="aNy-Ga-32U" firstAttribute="trailing" secondItem="AfM-Wa-DQP" secondAttribute="trailing" constant="30" id="HMa-ea-D5B"/>
                         <constraint firstItem="ey0-2x-Xmv" firstAttribute="top" secondItem="aNy-Ga-32U" secondAttribute="top" constant="4.5" id="O5R-qD-gdR"/>
                         <constraint firstItem="nus-1j-ILU" firstAttribute="leading" secondItem="aNy-Ga-32U" secondAttribute="leading" constant="30" id="Oj1-NS-wOU"/>
                         <constraint firstItem="aNy-Ga-32U" firstAttribute="trailing" secondItem="o9e-Ez-ks3" secondAttribute="trailing" constant="15" id="RCx-AZ-Hyc"/>
@@ -699,6 +736,85 @@ for your music based on the weather outside</string>
                         <constraint firstItem="0CL-hN-bAx" firstAttribute="centerX" secondItem="rQT-oK-rKd" secondAttribute="centerX" id="P3a-nw-5yy"/>
                         <constraint firstItem="LL3-3C-sOT" firstAttribute="centerX" secondItem="rQT-oK-rKd" secondAttribute="centerX" id="YII-Pi-5rE"/>
                     </constraints>
+                </view>
+                <view contentMode="scaleToFill" id="ST0-T5-mSY">
+                    <rect key="frame" x="0.0" y="0.0" width="335" height="315"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5Mg-MP-QSD">
+                            <rect key="frame" x="42.5" y="227" width="250" height="4"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="250" id="zbG-mP-ooS"/>
+                            </constraints>
+                            <color key="progressTintColor" red="0.1137254902" green="0.72549019609999998" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                        </progressView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Generating Your Playlist" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="ANa-zX-CYk">
+                            <rect key="frame" x="44" y="53" width="184" height="80"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="80" id="nBq-Aa-Grs"/>
+                                <constraint firstAttribute="width" constant="184" id="pAG-rh-irB"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="35"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This may take a few moments " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="gvL-jp-1CX">
+                            <rect key="frame" x="44" y="135" width="263" height="28"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="28" id="8Km-ZI-h3S"/>
+                                <constraint firstAttribute="width" constant="263" id="aw7-ie-5XD"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LFf-az-rkQ" customClass="DesignableProgessView" customModule="Weatherify" customModuleProvider="target">
+                            <rect key="frame" x="42.5" y="210" width="250" height="45"/>
+                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="250" id="5K8-0C-RJE"/>
+                                <constraint firstAttribute="height" constant="45" id="BSO-Au-xF4"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                    <color key="value" red="0.1137254902" green="0.72549019609999998" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DGE-wS-ewZ">
+                            <rect key="frame" x="42.5" y="214" width="250" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="250" id="6GC-1t-dDP"/>
+                                <constraint firstAttribute="height" constant="35" id="SIz-69-Pwl"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                            <state key="normal" title="View Your Playlist">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="viewPlaylistBtn:" destination="ln6-Tj-mDY" eventType="touchUpInside" id="5UX-Nk-hwV"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <viewLayoutGuide key="safeArea" id="Xc6-ED-13h"/>
+                    <color key="backgroundColor" red="0.1333333333" green="0.1333333333" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="gvL-jp-1CX" firstAttribute="leading" secondItem="Xc6-ED-13h" secondAttribute="leading" constant="44" id="4Rv-13-8FK"/>
+                        <constraint firstItem="5Mg-MP-QSD" firstAttribute="top" secondItem="gvL-jp-1CX" secondAttribute="bottom" constant="64" id="9HZ-B3-r3v"/>
+                        <constraint firstItem="DGE-wS-ewZ" firstAttribute="centerX" secondItem="ST0-T5-mSY" secondAttribute="centerX" id="SHs-VA-Moy"/>
+                        <constraint firstItem="ANa-zX-CYk" firstAttribute="top" secondItem="ST0-T5-mSY" secondAttribute="top" constant="53" id="Tmp-Uz-1d3"/>
+                        <constraint firstItem="gvL-jp-1CX" firstAttribute="top" secondItem="ANa-zX-CYk" secondAttribute="bottom" constant="2" id="UTL-J2-W5g"/>
+                        <constraint firstItem="LFf-az-rkQ" firstAttribute="top" secondItem="gvL-jp-1CX" secondAttribute="bottom" constant="47" id="VE4-vo-F8Y"/>
+                        <constraint firstItem="ANa-zX-CYk" firstAttribute="leading" secondItem="Xc6-ED-13h" secondAttribute="leading" constant="44" id="ZGg-Tt-11F"/>
+                        <constraint firstItem="5Mg-MP-QSD" firstAttribute="centerX" secondItem="ST0-T5-mSY" secondAttribute="centerX" id="lAb-hK-egd"/>
+                        <constraint firstItem="DGE-wS-ewZ" firstAttribute="top" secondItem="gvL-jp-1CX" secondAttribute="bottom" constant="51" id="tpK-G4-WH7"/>
+                        <constraint firstItem="LFf-az-rkQ" firstAttribute="centerX" secondItem="ST0-T5-mSY" secondAttribute="centerX" id="zlQ-pI-neN"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="18"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
             </objects>
             <point key="canvasLocation" x="847.82608695652175" y="-371.65178571428572"/>
@@ -900,6 +1016,11 @@ for your music based on the weather outside</string>
                             <constraint firstItem="qS0-EL-OS7" firstAttribute="trailing" secondItem="vLP-Hf-LoC" secondAttribute="trailing" constant="44" id="yXu-t8-saQ"/>
                         </constraints>
                     </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="mainPlaylistCover" destination="LX9-o5-QRs" id="F20-xI-Qup"/>
                         <outlet property="playlistDetails" destination="qZl-KJ-xE5" id="VG6-7R-7hV"/>
@@ -1303,15 +1424,17 @@ device</string>
     </scenes>
     <resources>
         <image name="Group 15" width="512" height="71"/>
-        <image name="Music Bars" width="1268" height="1168"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <image name="logo" width="512" height="136"/>
+        <image name="logo-green" width="512" height="136"/>
         <image name="logout" width="512" height="71"/>
+        <image name="mountains" width="1656" height="808"/>
         <image name="music.note" catalog="system" width="97" height="128"/>
         <image name="music.note.list" catalog="system" width="128" height="115"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="playlist-button" width="512" height="71"/>
+        <image name="sky" width="1656" height="2240"/>
         <image name="spotify-logo" width="572" height="416"/>
         <image name="spotifyLogin" width="512" height="71"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>

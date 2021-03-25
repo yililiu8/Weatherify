@@ -10,11 +10,31 @@ import UIKit
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var loginBtn: UIButton!
+    @IBOutlet weak var loadSunScreen: UIImageView!
+    var successfullySignedIn = false
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .dark
         loginBtn.imageView?.contentMode = .scaleAspectFit
         navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        //animation
+        UIView.animate(withDuration: 3.0, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+            self.loadSunScreen.transform = self.loadSunScreen.transform.rotated(by: .pi * -1.3)
+        }, completion: { completed in
+            
+        })
+        Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { timer in
+            if self.successfullySignedIn {
+                timer.invalidate()
+            } else {
+                UIView.animate(withDuration: 3.0, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                    self.loadSunScreen.transform = self.loadSunScreen.transform.rotated(by: .pi * -1.3)
+                }, completion: { completed in
+                    
+                })
+            }
+        }
     }
     
     func handleSignIn(success: Bool) {
@@ -24,10 +44,8 @@ class LoginViewController: UIViewController {
             present(alert, animated: true, completion: nil)
             return
         }
+        successfullySignedIn = true
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeVC") as! HomeViewController
-//        vc.modalPresentationStyle = .fullScreen
-////        navigationController?.setNavigationBarHidden(false, animated: false)
-//        navigationController?.pushViewController(vc, animated: true)
         vc.modalPresentationStyle = .fullScreen
         vc.modalTransitionStyle = .coverVertical
         self.present(vc, animated:true)
@@ -41,9 +59,6 @@ class LoginViewController: UIViewController {
                 self?.handleSignIn(success: success)
             }
         }
-//        vc.modalPresentationStyle = .fullScreen
-////        navigationController?.setNavigationBarHidden(false, animated: false)
-//        navigationController?.pushViewController(vc, animated: true)
         vc.modalPresentationStyle = .fullScreen
         vc.modalTransitionStyle = .coverVertical
         self.present(vc, animated:true)

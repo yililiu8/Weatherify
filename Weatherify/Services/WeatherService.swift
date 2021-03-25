@@ -48,18 +48,15 @@ class WeatherService {
         }
         
         let task = session.dataTask(with: url) { (data, response, error) in
-            
             DispatchQueue.main.async {
                 if let error = error {
                     onError(error.localizedDescription)
                     return
                 }
-                
                 guard let data = data, let response = response as? HTTPURLResponse else {
                     onError("Invalid data or response")
                     return
                 }
-                
                 do {
                     if response.statusCode == 200 {
                         let items = try JSONDecoder().decode(Result.self, from: data)

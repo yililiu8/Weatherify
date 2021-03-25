@@ -35,6 +35,7 @@ final class SpotifyService {
         }
     }
     
+    //MARK: song API search calls
     public func searchSongs(key: String, genre: String?, completion: @escaping (SearchResultResponse?, Error?) -> Void) {
         guard let urlKey = key.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             return
@@ -56,7 +57,6 @@ final class SpotifyService {
 
                 do {
                     let res = try JSONDecoder().decode(SearchResultResponse.self, from: data)
-//                    let res = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                     print(res)
                     print("successful search for tracks")
                     completion(res, nil)
@@ -68,8 +68,32 @@ final class SpotifyService {
             task.resume()
         }
     }
+    /* returns tracks given a certain genre */
+    public func getRecommendations(genres: Set<String>, completion: @escaping (RecommendationsReponse?, Error?) -> Void) {
+        let seeds = genres.joined(separator: ",")
+        print("getting recommendations...")
+        createRequest(with: URL(string: SpotifyService.baseAPIURL + "/recommendations?seed_genres=\(seeds)&limit=10"), type: .GET) { (baseRequest) in
+            let task = URLSession.shared.dataTask(with: baseRequest) { (data, _, error) in
+                guard let data = data, error == nil else {
+                    completion(nil, APIError.failedToGetData)
+                    return
+                }
+
+                do {
+                    let res = try JSONDecoder().decode(RecommendationsReponse.self, from: data)
+                    print(res)
+                    completion(res, nil)
+                } catch {
+                    print(error)
+                    completion(nil, error)
+                }
+            }
+            task.resume()
+        }
+    }
     
     
+    //MARK: playlist API search calls
     public func searchPlaylists(key: String, completion: @escaping (SearchResultResponse?, Error?) -> Void) {
         guard let urlKey = key.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             return
@@ -80,10 +104,8 @@ final class SpotifyService {
                     completion(nil, APIError.failedToGetData)
                     return
                 }
-
                 do {
                     let res = try JSONDecoder().decode(SearchResultResponse.self, from: data)
-//                    let res = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                     print(res)
                     print("successful search for tracks")
                     completion(res, nil)
@@ -107,7 +129,6 @@ final class SpotifyService {
 
                 do {
                     let res = try JSONDecoder().decode(LibraryPlaylistResponse.self, from: data)
-//                    let res = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                     print(res)
                     completion(res.items, nil)
                 } catch {
@@ -118,7 +139,6 @@ final class SpotifyService {
             task.resume()
         }
     }
-    
     public func getPlaylist(with id: String, completion: @escaping (Playlist?, Error?) -> Void) {
         createRequest(with: URL(string: SpotifyService.baseAPIURL + "/playlists/\(id)"), type: .GET) { (request) in
             let task = URLSession.shared.dataTask(with: request) { (data, _, error) in
@@ -129,7 +149,6 @@ final class SpotifyService {
 
                 do {
                     let res = try JSONDecoder().decode(Playlist.self, from: data)
-//                    let res = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                     print(res)
                     completion(res, nil)
                 } catch {
@@ -140,7 +159,6 @@ final class SpotifyService {
             task.resume()
         }
     }
-    
     public func createPlaylist(with name: String, completion: @escaping (String?, Error?) -> Void) {
         guard let uid = Constants.user?.id else {
             return
@@ -155,7 +173,6 @@ final class SpotifyService {
                     return
                 }
                 do {
-//                    let res = try JSONDecoder().decode(Playlist.self, from: data)
                     let res = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                     print(res)
                     if let response = res as? [String : Any], let id = response["id"] as? String{
@@ -163,16 +180,14 @@ final class SpotifyService {
                     } else {
                         completion(nil, error)
                     }
-//                    completion(res, nil)
                 } catch {
                     print(error)
                     completion(nil, error)
                 }
             }
-            task.resume()
+             task.resume()
         }
     }
-    
     public func addTrackToPlaylist(tracks: [AudioTrack], playlistID: String, completion: @escaping (Bool) -> Void) {
         createRequest(with: URL(string: SpotifyService.baseAPIURL + "/playlists/\(playlistID)/tracks"), type: .POST) { (baseRequest) in
             var request = baseRequest
@@ -185,56 +200,23 @@ final class SpotifyService {
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             let task = URLSession.shared.dataTask(with: request) { (data, _, error) in
                 guard let data = data, error == nil else {
-//                    completion(nil, APIError.failedToGetData)
                     completion(false)
                     return
                 }
                 do {
-//                    let res = try JSONDecoder().decode(Playlist.self, from: data)
                     let res = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                     print(res)
                     completion(true)
-//                    if let response = res as? [String : Any], let id = response["id"] as? String{
-//                        completion(id, nil)
-//                    } else {
-//                        completion(nil, error)
-//                    }
-//                    completion(res, nil)
                 } catch {
                     print(error)
                     completion(false)
-//                    completion(nil, error)
-                }
-            }
-            task.resume()
-        }
-    }
-
-    /* returns tracks given a certain genre */
-    public func getRecommendations(genres: Set<String>, completion: @escaping (RecommendationsReponse?, Error?) -> Void) {
-        let seeds = genres.joined(separator: ",")
-        print("getting recommendations...")
-        createRequest(with: URL(string: SpotifyService.baseAPIURL + "/recommendations?seed_genres=\(seeds)&limit=10"), type: .GET) { (baseRequest) in
-            let task = URLSession.shared.dataTask(with: baseRequest) { (data, _, error) in
-                guard let data = data, error == nil else {
-                    completion(nil, APIError.failedToGetData)
-                    return
-                }
-
-                do {
-                    let res = try JSONDecoder().decode(RecommendationsReponse.self, from: data)
-//                    let res = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                    print(res)
-                    completion(res, nil)
-                } catch {
-                    print(error)
-                    completion(nil, error)
                 }
             }
             task.resume()
         }
     }
     
+    //MARK: User Info API calls
     public func getCurrentUserProfile(completion: @escaping (UserProfile?, Error?) -> Void) {
         createRequest(with: URL(string: SpotifyService.baseAPIURL + "/me"), type: .GET) { (baseRequest) in
             let task = URLSession.shared.dataTask(with: baseRequest) { (data, _, error) in
@@ -242,7 +224,6 @@ final class SpotifyService {
                     completion(nil, APIError.failedToGetData)
                     return
                 }
-                
                 do {
                     let res = try JSONDecoder().decode(UserProfile.self, from: data)
                     print(res)
