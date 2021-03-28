@@ -1,6 +1,0 @@
-framework module Pods_Weatherify_WeatherifyUITests {
-  umbrella header "Pods-Weatherify-WeatherifyUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}
