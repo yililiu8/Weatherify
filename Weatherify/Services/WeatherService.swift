@@ -12,7 +12,7 @@ class WeatherService {
     static let shared = WeatherService()
     
     //temp variables -> will be changed once user location is established
-    let URL_API_KEY = "e8a32bbf2d2ee67b9a28dfe938f059fb"
+    let URL_API_KEY = Keys.openWeatherMapAPIKey
     var URL_LATITUDE = "34.0703"
     var URL_LONGITUDE = "-118.4441"
     var URL_GET_ONE_CALL = ""

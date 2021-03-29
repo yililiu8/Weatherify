@@ -12,8 +12,8 @@ final class AuthManager {
     static let shared = AuthManager()
     
     struct ids {
-        static let clientID = "128037abe3734ca989d2db122de8b1ad"
-        static let clientSecret = "610533dc229c4c948c24d35d04aeb80c"
+        static let clientID = Keys.spotifyClientID
+        static let clientSecret = Keys.spotifyClientSecret
     }
     static let tokenAPIURL = "https://accounts.spotify.com/api/token"
     static let redirectURI = "https://github.com/yililiu8"

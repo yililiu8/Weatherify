@@ -1,0 +1,9 @@
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+## API keys
+Weatherify/Resources/Keys.swift
+
+# CocoaPods
+Pods/

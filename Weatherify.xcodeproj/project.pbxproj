@@ -98,6 +98,7 @@
 		947EC102260A9AC000CAED56 /* LibraryPlaylistResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC101260A9AC000CAED56 /* LibraryPlaylistResponse.swift */; };
 		947EC107260ACF0B00CAED56 /* AllPlaylistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC106260ACF0A00CAED56 /* AllPlaylistsViewController.swift */; };
 		947EC10C260AD50000CAED56 /* AllPlaylistsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EC10B260AD50000CAED56 /* AllPlaylistsTableViewCell.swift */; };
+		94E5EE692612206E00C97DE7 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E5EE682612206E00C97DE7 /* Keys.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,6 +176,7 @@
 		947EC101260A9AC000CAED56 /* LibraryPlaylistResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPlaylistResponse.swift; sourceTree = "<group>"; };
 		947EC106260ACF0A00CAED56 /* AllPlaylistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPlaylistsViewController.swift; sourceTree = "<group>"; };
 		947EC10B260AD50000CAED56 /* AllPlaylistsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPlaylistsTableViewCell.swift; sourceTree = "<group>"; };
+		94E5EE682612206E00C97DE7 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		D590E035ADEFBA4483698F1D /* Pods-Weatherify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weatherify.release.xcconfig"; path = "Target Support Files/Pods-Weatherify/Pods-Weatherify.release.xcconfig"; sourceTree = "<group>"; };
 		F3024039D7310EF423373FD0 /* Pods-WeatherifyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherifyTests.release.xcconfig"; path = "Target Support Files/Pods-WeatherifyTests/Pods-WeatherifyTests.release.xcconfig"; sourceTree = "<group>"; };
 		FEFC5A8449DF33AAC0D2A51A /* Pods-Weatherify-WeatherifyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weatherify-WeatherifyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Weatherify-WeatherifyUITests/Pods-Weatherify-WeatherifyUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				947EC09B2609481700CAED56 /* Extensions.swift */,
 				947EC0C72609928A00CAED56 /* Constants.swift */,
 				947C5E65260CFF3900CE6FA0 /* DesignableProgessView.swift */,
+				94E5EE682612206E00C97DE7 /* Keys.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -665,6 +668,7 @@
 				947EC0CF260A4BF900CAED56 /* SearchResultResponse.swift in Sources */,
 				947EBFDE2608FC0900CAED56 /* ViewController.swift in Sources */,
 				947EBFDA2608FC0900CAED56 /* AppDelegate.swift in Sources */,
+				94E5EE692612206E00C97DE7 /* Keys.swift in Sources */,
 				947EC09C2609481700CAED56 /* Extensions.swift in Sources */,
 				947EC0A326094D9E00CAED56 /* SettingsViewController.swift in Sources */,
 				947EBFDC2608FC0900CAED56 /* SceneDelegate.swift in Sources */,
